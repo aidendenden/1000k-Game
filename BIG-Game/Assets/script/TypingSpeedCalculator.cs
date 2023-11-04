@@ -270,6 +270,8 @@ public class TypingSpeedCalculator : MonoBehaviour
         {
             Debug.Log("连续中");
             UpdateDelegate("chixuzho");
+            Vector2 vector2_D = InputEd - InputSt;
+            GameEventManager.Instance.Triggered("连续中",transform,vector2_D);
         }
 
         if (inputList[0] == true && inputList[1] == false)
@@ -280,6 +282,9 @@ public class TypingSpeedCalculator : MonoBehaviour
                 isLianXueIng = false;
                 InputEd = KeyCodeToV(inputNow);
                 EndDelegate("aaa");
+                
+                Vector2 vector2_B=Vector2.zero;
+                GameEventManager.Instance.Triggered("连续结束",transform,vector2_B);
             }
         }
 

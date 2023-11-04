@@ -16,12 +16,12 @@ public class GameEventManager : MonoBehaviour
 
     public static GameEventManager Instance => Lazy.Value;
 
-    public delegate void TriggerEventHandler(string message, Transform _transform,Vector3 v);
+    public delegate void TriggerEventHandler(string message, Transform _transform,Vector2 v);
 
     public static event TriggerEventHandler OnTrigger;
 
 
-    public void Triggered(string message, Transform _transform,Vector3 v)
+    public void Triggered(string message, Transform _transform,Vector2 v)
     {
         Debug.Log("Triggered: " + message);
         if (OnTrigger != null)
@@ -37,6 +37,16 @@ public class GameEventManager : MonoBehaviour
     {
         OnTrigger -= listener;
     }
+    private void HandleTrigger(string message,Transform _transform)
+    {
+        string t = "hello world";
+        if (string.Equals(message, t))
+        {
+            Debug.Log("Trigger event received: " + message, _transform);
+        }
+
+    }
+    
 }
 
 
@@ -53,9 +63,13 @@ public class GameEventManager : MonoBehaviour
 //      GameEventManager.OnTrigger -= HandleTrigger;
 // }
 //
-// void HandleTrigger(string message,Transform _transform)
+//  private void HandleTrigger(string message,Transform _transform)
 // {
-//     Debug.Log("Trigger event received: " + message,_transform);
+//     string t = "hello world";
+//     if (string.Equals(message, t))
+//     {
+//         Debug.Log("Trigger event received: " + message, _transform);
+//     }
 // }
 
 #endregion
