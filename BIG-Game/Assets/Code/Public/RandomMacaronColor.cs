@@ -26,4 +26,6 @@ public class RandomMacaronColor : MonoBehaviour
             Debug.LogWarning("SpriteRenderer component not found!");
         }
     }
+
+
 }
