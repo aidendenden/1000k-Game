@@ -1,0 +1,8 @@
+﻿BIG-Game/Library
+BIG-Game/Logs
+BIG-Game/Temp
+BIG-Game/UserSettings
+BIG-Game/Assembly-CSharp.csproj
+BIG-Game/Assembly-CSharp-Editor-firstpass.csproj
+*.csproj
+*.sln
