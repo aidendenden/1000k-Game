@@ -270,9 +270,8 @@ public class TypingSpeedCalculator : MonoBehaviour
         {
             Debug.Log("连续中");
             UpdateDelegate("chixuzho");
-
-            Vector2 d = InputEd - InputSt;
-            PanDuanFangXiang(d);
+            Vector2 vector2_D = InputEd - InputSt;
+            GameEventManager.Instance.Triggered("连续中",transform,vector2_D);
         }
 
         if (inputList[0] == true && inputList[1] == false)
@@ -283,13 +282,14 @@ public class TypingSpeedCalculator : MonoBehaviour
                 isLianXueIng = false;
                 InputEd = KeyCodeToV(inputNow);
                 EndDelegate("aaa");
-
-                var b = new Vector2(0, 0);
-                PanDuanFangXiang(b);
+                
+                Vector2 vector2_B=Vector2.zero;
+                GameEventManager.Instance.Triggered("连续结束",transform,vector2_B);
             }
         }
 
-        
+        Vector2 d = InputEd - InputSt;
+        PanDuanFangXiang(d);
     }
 
     public Vector2 GetScreenCoordinates(Vector2 keyboardPosition)
@@ -414,42 +414,42 @@ public class TypingSpeedCalculator : MonoBehaviour
         if (D.x < 0)
         {
             HuaDongFangXiang.x = D.x;
-            Debug.Log("向左");
+            //Debug.Log("向左");
             
         }
 
         if (D.x > 0)
         {
             HuaDongFangXiang.x = D.x;
-            Debug.Log("向右");
+            //Debug.Log("向右");
             
         }
 
         if (D.x == 0)
         {
             HuaDongFangXiang.x = D.x;
-            Debug.Log("X为0");
+            //Debug.Log("X为0");
         }
 
 
         if (D.y < 0)
         {
             HuaDongFangXiang.y = D.y;
-            Debug.Log("向下");
+            //Debug.Log("向下");
             
         }
 
         if (D.y > 0)
         {
             HuaDongFangXiang.y = D.y;
-            Debug.Log("向上");
+            //Debug.Log("向上");
            
         }
 
         if (D.y == 0)
         {
             HuaDongFangXiang.y = D.y;
-            Debug.Log("y为0");
+            //Debug.Log("y为0");
         }
     }
 }

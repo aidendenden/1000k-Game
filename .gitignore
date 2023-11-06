@@ -6,3 +6,5 @@ BIG-Game/Assembly-CSharp.csproj
 BIG-Game/Assembly-CSharp-Editor-firstpass.csproj
 *.csproj
 *.sln
+BIG-Game/.idea
+BIG-Game/obj
