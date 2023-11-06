@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+
 
 public class TypingSpeedCalculator : MonoBehaviour
 {
@@ -20,7 +22,14 @@ public class TypingSpeedCalculator : MonoBehaviour
     public Vector2 HuaDongFangXiang;
     public Vector2 nowScreenPosition;
 
-   
+    public UnityEvent HuaDongEventUp;
+    public UnityEvent HuaDongEventDown;
+    public UnityEvent HuaDongEventLeft;
+    public UnityEvent HuaDongEventRight;
+    public UnityEvent noHuaDongEventX;
+    public UnityEvent noHuaDongEventY;
+    public UnityEvent HuaDongEventEnd;
+
 
     private float lastKeyPressTime; // 上一次按键事件的时间戳
     List<bool> inputList = new List<bool>();
@@ -271,7 +280,10 @@ public class TypingSpeedCalculator : MonoBehaviour
             Debug.Log("连续中");
             UpdateDelegate("chixuzho");
             Vector2 vector2_D = InputEd - InputSt;
+            PanDuanFangXiang(vector2_D);
             GameEventManager.Instance.Triggered("连续中",transform,vector2_D);
+            
+            
         }
 
         if (inputList[0] == true && inputList[1] == false)
@@ -284,12 +296,15 @@ public class TypingSpeedCalculator : MonoBehaviour
                 EndDelegate("aaa");
                 
                 Vector2 vector2_B=Vector2.zero;
+                PanDuanFangXiang(vector2_B);
+                HuaDongEventEnd.Invoke();
                 GameEventManager.Instance.Triggered("连续结束",transform,vector2_B);
+                
             }
         }
 
-        Vector2 d = InputEd - InputSt;
-        PanDuanFangXiang(d);
+        
+        
     }
 
     public Vector2 GetScreenCoordinates(Vector2 keyboardPosition)
@@ -414,6 +429,7 @@ public class TypingSpeedCalculator : MonoBehaviour
         if (D.x < 0)
         {
             HuaDongFangXiang.x = D.x;
+            HuaDongEventLeft.Invoke();
             //Debug.Log("向左");
             
         }
@@ -421,13 +437,15 @@ public class TypingSpeedCalculator : MonoBehaviour
         if (D.x > 0)
         {
             HuaDongFangXiang.x = D.x;
+            HuaDongEventRight.Invoke();
             //Debug.Log("向右");
-            
+
         }
 
         if (D.x == 0)
         {
             HuaDongFangXiang.x = D.x;
+            noHuaDongEventX.Invoke();
             //Debug.Log("X为0");
         }
 
@@ -435,20 +453,23 @@ public class TypingSpeedCalculator : MonoBehaviour
         if (D.y < 0)
         {
             HuaDongFangXiang.y = D.y;
+            HuaDongEventDown.Invoke();
             //Debug.Log("向下");
-            
+
         }
 
         if (D.y > 0)
         {
             HuaDongFangXiang.y = D.y;
+            HuaDongEventUp.Invoke();
             //Debug.Log("向上");
-           
+
         }
 
         if (D.y == 0)
         {
             HuaDongFangXiang.y = D.y;
+            noHuaDongEventY.Invoke();
             //Debug.Log("y为0");
         }
     }
