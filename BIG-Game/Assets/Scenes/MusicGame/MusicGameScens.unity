@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 595874881}
   - component: {fileID: 595874880}
   - component: {fileID: 595874879}
+  - component: {fileID: 595874885}
   m_Layer: 0
   m_Name: RTouch
   m_TagString: Untagged
@@ -611,7 +612,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6e3b6feac48595442844127fdb219096, type: 3}
-  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0.5294118}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -621,6 +622,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &595874885
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595874877}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 738d58c120ea7154e9095aa10921b5f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &632124131
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +657,7 @@ GameObject:
   - component: {fileID: 632124134}
   - component: {fileID: 632124136}
   - component: {fileID: 632124137}
+  - component: {fileID: 632124138}
   m_Layer: 0
   m_Name: TestOne
   m_TagString: Untagged
@@ -873,6 +896,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca8e7395d5b32a4ba6bb3f1f603afc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &632124138
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632124131}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 738d58c120ea7154e9095aa10921b5f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &735312353
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +932,7 @@ GameObject:
   - component: {fileID: 735312356}
   - component: {fileID: 735312355}
   - component: {fileID: 735312360}
+  - component: {fileID: 735312361}
   m_Layer: 0
   m_Name: LTouch
   m_TagString: Untagged
@@ -1116,7 +1161,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 81b3b7165a1de6d49986c898893bac1e, type: 3}
-  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0.5294118}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1138,6 +1183,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fb5e558b0c33241baba6b56765352f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &735312361
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735312353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 738d58c120ea7154e9095aa10921b5f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &990081313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1219,7 @@ GameObject:
   - component: {fileID: 990081316}
   - component: {fileID: 990081315}
   - component: {fileID: 990081314}
+  - component: {fileID: 990081321}
   m_Layer: 0
   m_Name: LHuaDong
   m_TagString: Untagged
@@ -1304,8 +1371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66893de9ee049c541a0886a705199049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseRate: 20
-  HuaDongHard: 10
+  decreaseRate: 10
+  HuaDongHard: 5
   JiHuo:
     m_PersistentCalls:
       m_Calls:
@@ -1378,7 +1445,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a04fdfeb79fe7a14d8395d040e4fba98, type: 3}
-  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0.5294118}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1403,6 +1470,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2045259455}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &990081321
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990081313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 738d58c120ea7154e9095aa10921b5f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1124372283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1506,7 @@ GameObject:
   - component: {fileID: 1124372284}
   - component: {fileID: 1124372290}
   - component: {fileID: 1124372291}
+  - component: {fileID: 1124372292}
   m_Layer: 0
   m_Name: RHuaDong
   m_TagString: Untagged
@@ -1545,8 +1634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66893de9ee049c541a0886a705199049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseRate: 20
-  HuaDongHard: 10
+  decreaseRate: 10
+  HuaDongHard: 5
   JiHuo:
     m_PersistentCalls:
       m_Calls:
@@ -1619,7 +1708,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3a549bc8568bcf44a85570ca91898599, type: 3}
-  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0.5294118}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1668,6 +1757,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fb5e558b0c33241baba6b56765352f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1124372292
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124372283}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 738d58c120ea7154e9095aa10921b5f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1449222439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,10 +2015,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameStart: 1
-  timeThreshold: 0.3
+  timeThreshold: 0.2
   Yoffset: 150
   Xoffset: 0
   inputNow: 0
+  inputPast: 0
   InputSt: {x: 0, y: 0}
   InputEd: {x: 0, y: 0}
   isLianXueIng: 0
@@ -1947,6 +2058,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 595874883}
+        m_TargetAssemblyTypeName: TouchingTest, Assembly-CSharp
+        m_MethodName: HuaDongClean
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   HuaDongEventRight:
     m_PersistentCalls:
       m_Calls:
@@ -1965,6 +2088,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1124372286}
         m_TargetAssemblyTypeName: TouchingTest, Assembly-CSharp
         m_MethodName: HuaDongAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 990081318}
+        m_TargetAssemblyTypeName: TouchingTest, Assembly-CSharp
+        m_MethodName: HuaDongClean
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2121,9 +2256,9 @@ Transform:
   m_Children:
   - {fileID: 632124132}
   - {fileID: 1124372289}
+  - {fileID: 990081320}
   - {fileID: 595874878}
   - {fileID: 735312354}
-  - {fileID: 990081320}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7835869927036764923

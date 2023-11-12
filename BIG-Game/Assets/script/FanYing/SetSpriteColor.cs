@@ -6,10 +6,11 @@ using UnityEngine;
 public class SetSpriteColor : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
-   
 
-    private float TimeOne = 1f;
+
+    private float TimeOne = 0.5f;
     
 
 
@@ -19,6 +20,11 @@ public class SetSpriteColor : MonoBehaviour
         if (spriteRenderer == null)
         {
             Debug.LogWarning("SpriteRenderer component not found!");
+        }
+        animator = GetComponent<Animator>();
+        if (spriteRenderer == null)
+        {
+            Debug.LogWarning("animator component not found!");
         }
         else
         {
@@ -36,8 +42,8 @@ public class SetSpriteColor : MonoBehaviour
         }
         else
         {
-            TimeOne = 1f;
-            SetSpriteToG();
+            TimeOne = 0.5f;
+            //SetSpriteToG();
 
         }
 
@@ -48,8 +54,9 @@ public class SetSpriteColor : MonoBehaviour
 
     public void Highlighter()
     {
-        TimeOne = 1f;
-        SetSpriteToWhite();
+        TimeOne = 0.5f;
+        animator.SetTrigger("Jump");
+        //SetSpriteToWhite();
     }
 
     

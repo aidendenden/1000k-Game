@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 
+
 public class TypingSpeedCalculator : MonoBehaviour
 {
     public bool isGameStart = false;//是true的时候才会加分
@@ -16,6 +17,7 @@ public class TypingSpeedCalculator : MonoBehaviour
     public float Yoffset = 150f;
     public float Xoffset = 0;
     public KeyCode inputNow;
+    public KeyCode inputPast;
     public Vector2 InputSt;
     public Vector2 InputEd;
     public bool isLianXueIng = false;
@@ -155,7 +157,7 @@ public class TypingSpeedCalculator : MonoBehaviour
 
     
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.anyKeyDown)
         {
@@ -163,6 +165,7 @@ public class TypingSpeedCalculator : MonoBehaviour
             {
                 if (Input.GetKeyDown(keyCode))
                 {
+                    inputPast = inputNow;
                     inputNow = keyCode;
                 }
             }
@@ -214,15 +217,18 @@ public class TypingSpeedCalculator : MonoBehaviour
         
     }
 
-
+ 
     public bool IsInputFast()
     {
+
+       
+
         if (Input.anyKeyDown)
         {
             float currentKeyPressTime = Time.time; // 获取当前时间戳
             float timeSinceLastKeyPress = currentKeyPressTime - lastKeyPressTime; // 计算距离上一次按键事件的时间差
 
-            if (timeSinceLastKeyPress <= timeThreshold)
+            if (timeSinceLastKeyPress <= timeThreshold && inputPast != inputNow)
             {
                 // Debug.Log("连续按键间隔小于时间阈值：" + timeSinceLastKeyPress + " 秒");
                 lastKeyPressTime = currentKeyPressTime; // 更新上一次按键事件的时间戳
@@ -283,33 +289,36 @@ public class TypingSpeedCalculator : MonoBehaviour
 
             //StartCoroutine("kaishi");
 
-            InputSt = KeyCodeToV(inputNow);
+            
 
             nowScreenPosition = GetScreenCoordinates(InputSt);
         }
 
         if (inputList[0] == true && inputList[1] == true)
         {
-            Debug.Log("连续中");
+            
             UpdateDelegate("chixuzho");
-            Vector2 vector2_D = InputEd - InputSt;
+            Vector2 vector2_D = KeyCodeToV(inputNow) - KeyCodeToV(inputPast);
+            Debug.Log("连续中" + vector2_D);
             PanDuanFangXiang(vector2_D);
             GameEventManager.Instance.Triggered("连续中",transform,vector2_D);
             
             
         }
 
-        if (inputList[0] == true && inputList[1] == false)
+        if (inputList[0] == true && inputList[1] == false )
         {
             if (!Input.anyKey)
             {
                 Debug.Log("连续结束");
-                isLianXueIng = false;
-                InputEd = KeyCodeToV(inputNow);
+                isLianXueIng = false;   
                 EndDelegate("aaa");
-                
+                inputList[0] = false;
+                inputList[1] = false;
+
                 Vector2 vector2_B=Vector2.zero;
                 PanDuanFangXiang(vector2_B);
+                Debug.Log("连续结束" + vector2_B);
                 HuaDongEventEnd.Invoke();
                 GameEventManager.Instance.Triggered("连续结束",transform,vector2_B);
                 
