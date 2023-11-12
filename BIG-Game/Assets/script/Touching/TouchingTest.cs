@@ -8,13 +8,34 @@ public class TouchingTest : MonoBehaviour
     public float decreaseRate = 1f;
     public float HuaDongHard = 200;
     public UnityEvent JiHuo;
-
+    public bool IsShot = false;
     public float variable = 1f;
-    
 
+    public bool ForOne = false;
+
+    private bool AtiveOpen = true;
+
+
+    public void JiHuoShot()
+    {
+        JiHuo.Invoke();
+    }
+
+    public void ForOneOpen()
+    {
+        if (ForOne)
+        {
+            AtiveOpen = true;
+        }
+        
+    }
     public void HuaDongAdd()
     {
-        variable++;
+        if (AtiveOpen)
+        {
+            variable++;
+        }
+        
     }
     public void HuaDongClean ()
     {
@@ -22,16 +43,23 @@ public class TouchingTest : MonoBehaviour
     }
     private void Update()
     {
-
-        variable -= decreaseRate * Time.deltaTime;
-        variable = Mathf.Max(variable, 0f);
-
-        if(variable >= HuaDongHard)
+        if (IsShot == false)
         {
-            variable = 0f;
-            JiHuo.Invoke();
+            variable -= decreaseRate * Time.deltaTime;
+            variable = Mathf.Max(variable, 0f);
+
+            if (variable >= HuaDongHard)
+            {
+                variable = 0f;
+                JiHuo.Invoke();
+                if (ForOne)
+                {
+                    AtiveOpen = false;
+                }
+
+            }
+
+
         }
-
-
     }
 }

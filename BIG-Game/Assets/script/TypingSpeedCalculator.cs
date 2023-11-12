@@ -29,6 +29,8 @@ public class TypingSpeedCalculator : MonoBehaviour
     public UnityEvent noHuaDongEventX;
     public UnityEvent noHuaDongEventY;
     public UnityEvent HuaDongEventEnd;
+    public UnityEvent TouchLEvent;
+    public UnityEvent TouchREvent;
 
 
     private float lastKeyPressTime; // 上一次按键事件的时间戳
@@ -153,7 +155,7 @@ public class TypingSpeedCalculator : MonoBehaviour
 
     
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.anyKeyDown)
         {
@@ -165,6 +167,14 @@ public class TypingSpeedCalculator : MonoBehaviour
                 }
             }
 
+            if (KeyCodeToV(inputNow).x <= 4)
+            {
+                TouchLEvent.Invoke();
+            }
+            else
+            {
+                TouchREvent.Invoke();
+            }
 
             if (Application.targetFrameRate != 60)
             {
@@ -264,6 +274,9 @@ public class TypingSpeedCalculator : MonoBehaviour
 
     private void inputACheck()
     {
+
+        
+
         if (inputList[0] == false && inputList[1] == true)
         {
              Debug.Log("连续开始");
