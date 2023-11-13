@@ -286,17 +286,17 @@ public class TypingSpeedCalculator : MonoBehaviour
         if (inputList[0] == false && inputList[1] == true)
         {
              Debug.Log("连续开始");
-
+            isLianXueIng = true;
             //StartCoroutine("kaishi");
 
-            
+
 
             nowScreenPosition = GetScreenCoordinates(InputSt);
         }
 
         if (inputList[0] == true && inputList[1] == true)
         {
-            
+            isLianXueIng = true;
             UpdateDelegate("chixuzho");
             Vector2 vector2_D = KeyCodeToV(inputNow) - KeyCodeToV(inputPast);
             Debug.Log("连续中" + vector2_D);

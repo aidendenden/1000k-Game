@@ -10,7 +10,7 @@ public class TouchingTest : MonoBehaviour
     public UnityEvent JiHuo;
     public bool IsShot = false;
     public float variable = 1f;
-
+    public TypingSpeedCalculator typingSpeedCalculator;
     public bool ForOne = false;
 
     private bool AtiveOpen = true;
@@ -19,6 +19,14 @@ public class TouchingTest : MonoBehaviour
     public void JiHuoShot()
     {
         JiHuo.Invoke();
+    }
+
+    public void JiHuoNotHuaDong()
+    {
+        if (typingSpeedCalculator.isLianXueIng == false)
+        {
+            JiHuoShot();
+        }
     }
 
     public void ForOneOpen()
