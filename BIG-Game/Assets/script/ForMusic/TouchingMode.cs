@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TouchingMode : MonoBehaviour
 {
     
     public bool IsAtive = false;
+    public UnityEvent hitNote;
 
     private DingDong dingDong;
     private Collider2D con2d;
@@ -43,6 +45,7 @@ public class TouchingMode : MonoBehaviour
         if (collision.tag == "Note")
         {
             dingDong.PlayAudioTwo();
+            hitNote.Invoke();
         }
     }
 }

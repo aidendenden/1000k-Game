@@ -5,7 +5,7 @@ using UnityEngine;
 public class NoteCon : MonoBehaviour
 {
 
-    public DingDong dingDong;
+    
     public float speed = 5f;
     private void OnTriggerEnter2D(Collider2D collision)
     {

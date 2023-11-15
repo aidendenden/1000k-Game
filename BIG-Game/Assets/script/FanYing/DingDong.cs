@@ -5,6 +5,7 @@ using UnityEngine;
 public class DingDong : MonoBehaviour
 {
     public AudioClip A1;
+    public AudioClip A2;
 
 
     private AudioSource audioSource;
@@ -40,6 +41,18 @@ public class DingDong : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.PlayOneShot(A1);
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource component not found!");
+        }
+    }
+
+    public void PlayAudioThree()
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(A2);
         }
         else
         {
