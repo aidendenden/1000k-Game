@@ -14,9 +14,13 @@ public class MusicRhythmGenerator : MonoBehaviour
     private float[] _spectrumData = new float[8192];
     private float _lastSpawnTime = -1.0f;
     private float _beatTimer = 0f;
+    private MusicPoint musicPoint;
+
 
     void Start()
     {
+
+        musicPoint = GameObject.FindGameObjectWithTag("PManager").GetComponent<MusicPoint>();
         if (!audioSource.isPlaying)
         {
             audioSource.Play();
@@ -44,7 +48,7 @@ public class MusicRhythmGenerator : MonoBehaviour
         if (maxSpectrumValue > sensitivity)
         {
             _beatTimer += Time.deltaTime;
-            if (_beatTimer > spawnInterval)
+            if (_beatTimer > spawnInterval-(musicPoint.point/80))
             {
                 // 生成物体
                 StartCoroutine(SpawnObjectWithDelay(spawnDelay));

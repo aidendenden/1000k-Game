@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ForJueSe : MonoBehaviour
 {
+    private Animator ani;
     private SpriteRenderer spriteRenderer;
     private float coldTime = 1f;
     private void Start()
@@ -11,7 +12,14 @@ public class ForJueSe : MonoBehaviour
         {
             Debug.LogWarning("SpriteRenderer component not found!");
         }
-        
+
+        ani = GetComponent<Animator>();
+        if (ani == null)
+        {
+            Debug.LogWarning("ani component not found!");
+        }
+
+
     }
 
     private void Update()
@@ -22,7 +30,7 @@ public class ForJueSe : MonoBehaviour
         }
         else
         {
-            SetSpriteColor();
+            //SetBack();
             coldTime = 1f;
         }
     }
@@ -62,5 +70,17 @@ public class ForJueSe : MonoBehaviour
         {
             Debug.LogWarning("SpriteRenderer component not found!");
         }
+    }
+
+    public void SetGood()
+    {
+        ani.SetTrigger("Good");
+        coldTime = 1f;
+    }
+
+    public void SetBack()
+    {
+        ani.SetTrigger("Back");
+        coldTime = 1f;
     }
 }

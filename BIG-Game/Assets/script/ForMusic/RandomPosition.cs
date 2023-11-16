@@ -8,7 +8,7 @@ public class RandomPosition : MonoBehaviour
     {
       
         // 随机选择一个位置坐标
-        int randomIndex = Random.Range(0, 4);
+        int randomIndex = Random.Range(0, 12);
         Vector3 randomPosition = positions[randomIndex];
 
         // 将物体移动到随机选择的位置坐标

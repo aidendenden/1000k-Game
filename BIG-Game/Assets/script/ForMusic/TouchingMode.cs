@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,7 @@ public class TouchingMode : MonoBehaviour
     
     public bool IsAtive = false;
     public UnityEvent hitNote;
+   
 
     private DingDong dingDong;
     private Collider2D con2d;
@@ -48,4 +50,7 @@ public class TouchingMode : MonoBehaviour
             hitNote.Invoke();
         }
     }
+
+  
+    
 }

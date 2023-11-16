@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.4700791, g: 0.9056604, b: 0.33036664, a: 1}
+  m_Color: {r: 0.5412004, g: 0.8018868, b: 0.20173247, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8bbd8034fe24d4ea39811352134b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
 --- !u!50 &1585629467224044577
 Rigidbody2D:
   serializedVersion: 4
@@ -177,6 +177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positions:
   - {x: -16, y: 16.5, z: 0}
+  - {x: -16, y: 16.5, z: 0}
+  - {x: 14, y: 16.5, z: 0}
   - {x: 14, y: 16.5, z: 0}
   - {x: -6, y: 16.5, z: 0}
   - {x: -6, y: 16.5, z: 0}
