@@ -8,6 +8,7 @@ TagManager:
   - Note
   - TouchPoint
   - PManager
+  - WW
   layers:
   - Default
   - TransparentFX

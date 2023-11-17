@@ -12,21 +12,25 @@ public class TigerAnimationController : MonoBehaviour
     }
     void Update()
     {
-        // 当按下W、A、S或D键时激活动画
+        
         if (Input.GetKey(AtiveKey))
         {
             if(isAtive == false) {
-                bAnimator.SetTrigger("JumpIn"); // 激活名为"ActivateAnimation"的触发器
+                bAnimator.SetTrigger("JumpIn");
+                bAnimator.SetBool("OFFF", false);// 激活名为"ActivateAnimation"的触发器
                 isAtive = true;
             }
         }  
         else {
-            if (isAtive)
-            {
-                
-                bAnimator.SetTrigger("Off"); // 激活名为"ActivateAnimation"的触发器
+
+            if(isAtive == true ||true) {
+                bAnimator.SetBool("OFFF",true); // 激活名为"ActivateAnimation"的触发器
                 isAtive = false;
             }
+            
+                
+                
+            
         }
             
             
