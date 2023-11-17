@@ -137,21 +137,21 @@ public class TypingSpeedCalculator : MonoBehaviour
         inputList.Add(false);
         inputList.Add(false);
         AddListenerEndDelegate(delegate(string message) { LeftHuaDot(); });
-        if (isGameStart == false) { AddListenerEndDelegate(delegate (string message) { huahua(); }); }
+        // if (isGameStart == false) { AddListenerEndDelegate(delegate (string message) { huahua(); }); }
         AddListenerUpdateDelegate(delegate(string message) { scoreCalculation(); });
         //AddListenerLevelUp(delegate (string message) { _eyeSwith.changeImage(UnityEngine.Random.Range(0, 10)); });
-        AddListenerLevelUp(delegate (string message) { changeEye(); });
+        //AddListenerLevelUp(delegate (string message) { changeEye(); });
         //ContinuousEndDelegate += _dotCilck.HuaDongDot();
     }
 
     void huahua()
     {
-        Debug.Log("hua");
+        //Debug.Log("hua");
     } 
 
     void changeEye()
     {
-        Debug.Log("eye");
+        //Debug.Log("eye");
 
     }
 
