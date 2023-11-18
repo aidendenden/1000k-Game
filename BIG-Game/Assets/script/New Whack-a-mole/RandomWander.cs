@@ -16,6 +16,9 @@ public class RandomWander : MonoBehaviour
     public Vector2 randomDirection;
 
     public float offset=1;
+    
+    public float rotationSpeed = 5f; // 旋转速度
+    private Vector2 targetDirection; // 目标旋转方向
 
     private void Start()
     {
@@ -62,12 +65,13 @@ public class RandomWander : MonoBehaviour
 
 
         // 获取当前物体的移动方向
-        Vector2 forwardDirection = randomDirection;
-        
-        float angle = Mathf.Atan2(forwardDirection.y, forwardDirection.x) * Mathf.Rad2Deg;
+        Vector2 forwardDirection = GetComponent<RandomWander>().randomDirection;
 
-        // 设置物体的旋转角度
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // 计算目标旋转角度
+        float targetAngle = Mathf.Atan2(forwardDirection.y, forwardDirection.x) * Mathf.Rad2Deg;
+
+        // 使用Slerp逐帧旋转物体朝向
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, targetAngle), rotationSpeed * Time.deltaTime);
         
         // 更新物体的位置
         transform.position = newPosition;
