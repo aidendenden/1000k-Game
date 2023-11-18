@@ -11,7 +11,7 @@ public class RandomWander : MonoBehaviour
     
     public Camera mainCamera;
     public float screenEdgeBuffer = 0.1f;
-
+    public bool isHited = false;
     public float speed = 2f; // 物体移动速度
     public Vector2 randomDirection;
 
@@ -23,6 +23,7 @@ public class RandomWander : MonoBehaviour
     private void Start()
     {
         randomDirection = Random.insideUnitCircle.normalized;
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
     
     
@@ -69,6 +70,17 @@ public class RandomWander : MonoBehaviour
             }
         }
 
+        if (isHited) {
+
+            Vector3 direction = new Vector3(0, 40, 0) - gameObject.transform.position;
+
+            Vector3 normalizedDirection = direction.normalized;
+
+            randomDirection = normalizedDirection;
+
+            newPosition = (Vector2)transform.position + randomDirection * speed*1.5f * Time.deltaTime;
+
+        }
 
         // 获取当前物体的移动方向
         Vector2 forwardDirection = GetComponent<RandomWander>().randomDirection;
@@ -96,4 +108,19 @@ public class RandomWander : MonoBehaviour
 
         return false;
     }
+
+
+    public void BeHit()
+    {
+        isHited = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag =="CCC")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

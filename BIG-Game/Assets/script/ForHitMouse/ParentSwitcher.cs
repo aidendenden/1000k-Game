@@ -11,13 +11,14 @@ public class ParentSwitcher : MonoBehaviour
     public bool isDrop = false;
     private Animator anim;
     private GameObject KuangZi;
-
+    private HItPoint hItPoint;
 
 
     private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
         KuangZi = GameObject.FindGameObjectWithTag("Kuang");
+        hItPoint = GameObject.FindGameObjectWithTag("JinDu").GetComponent<HItPoint>();
     }
     public void SwitchParent()
     {
@@ -57,5 +58,10 @@ public class ParentSwitcher : MonoBehaviour
     public void MoveTo()
     {
         transform.position = Vector3.MoveTowards(transform.position, KuangZi.transform.position, Time.deltaTime * 10f);
+    }
+
+    public void getPoint()
+    {
+        hItPoint.Poing();
     }
 }

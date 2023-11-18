@@ -5,15 +5,25 @@ using UnityEngine.Events;
 
 public class MouseHitt : MonoBehaviour
 {
+    public UnityEvent beShot;
     public UnityEvent beHit;
-
+    public float shushuHP = 3;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "TouchPoint")
         {
-            beHit.Invoke();
+           if(shushuHP > 0)
+            {
+                shushuHP--;
+                beShot.Invoke();
+            }
+            else
+            {
+                beHit.Invoke();
+            }
+            
         }
     }
 }
