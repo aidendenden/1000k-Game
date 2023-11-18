@@ -61,6 +61,14 @@ public class RandomWander : MonoBehaviour
         }
 
 
+        // 获取当前物体的移动方向
+        Vector2 forwardDirection = randomDirection;
+        
+        float angle = Mathf.Atan2(forwardDirection.y, forwardDirection.x) * Mathf.Rad2Deg;
+
+        // 设置物体的旋转角度
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        
         // 更新物体的位置
         transform.position = newPosition;
     }
