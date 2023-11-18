@@ -9,6 +9,7 @@ TagManager:
   - TouchPoint
   - PManager
   - WW
+  - Kuang
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Water
   - UI
   - 11
-  - 
+  - CanBeTouch
   - 
   - 
   - 
