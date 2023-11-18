@@ -25,11 +25,11 @@ public class RandomWander : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            // 生成随机的移动方向
-            randomDirection = Random.insideUnitCircle.normalized;
-        }
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     // 生成随机的移动方向
+        //     randomDirection = Random.insideUnitCircle.normalized;
+        // }
         
         
         // 计算物体的新位置
