@@ -601,6 +601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 614571576}
   - component: {fileID: 614571575}
+  - component: {fileID: 614571577}
   m_Layer: 0
   m_Name: KouziLanZi 1
   m_TagString: Untagged
@@ -675,6 +676,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1338466835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614571577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614571574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8472dd178e0d78b4d94f1e9af960e9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Point: 0
 --- !u!1 &787269757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,13 +1472,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u9F20\u9F20"
       objectReference: {fileID: 0}
+    - target: {fileID: 2437080689186544855, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
+      propertyPath: TouChi.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437080689186544855, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
+      propertyPath: TouChi.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437080689186544855, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
+      propertyPath: TouChi.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 614571577}
+    - target: {fileID: 2437080689186544855, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
+      propertyPath: TouChi.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437080689186544855, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
+      propertyPath: TouChi.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Poing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437080689186544855, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
+      propertyPath: TouChi.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: HItPoint, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437080689186544855, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
+      propertyPath: TouChi.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2625746994065260720, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2625746994065260720, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2625746994065260720, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1502,6 +1544,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 427831545}
+    - target: {fileID: 3759151659623005811, guid: 90a27853fd3a4af46a71d68d1679ad63, type: 3}
+      propertyPath: screenEdgeBuffer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

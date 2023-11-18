@@ -43,16 +43,22 @@ public class RandomWander : MonoBehaviour
         if (CheckScreenEdge(newPosition))
         {
             // 如果超出屏幕边界，则反向移动
-            randomDirection = -randomDirection;
-            
-            
+           
+            Vector3 direction = new Vector3(0,0,0) - gameObject.transform.position;
+
+            // 如果你需要获取一个单位向量，你可以使用下面的代码
+            Vector3 normalizedDirection = direction.normalized;
+
+            randomDirection = normalizedDirection;
+
+
             // // 生成一个新的随机角度
             // float newAngle = Random.Range(0f, 360f);
             //
             // // 将新角度转换为方向向量
             // randomDirection = Quaternion.Euler(0f, 0f, newAngle) * Vector2.right;
-            
-            
+
+
             newPosition = (Vector2)transform.position + randomDirection * speed * Time.deltaTime;
         }
         else
@@ -82,8 +88,8 @@ public class RandomWander : MonoBehaviour
         Vector3 screenPoint = mainCamera.WorldToViewportPoint(position);
 
         // 检测是否超出屏幕边界
-        if (screenPoint.x < screenEdgeBuffer || screenPoint.x > 1 - screenEdgeBuffer ||
-            screenPoint.y < screenEdgeBuffer || screenPoint.y > 1 - screenEdgeBuffer)
+        if (screenPoint.x < screenEdgeBuffer-0.2 || screenPoint.x > 1 - screenEdgeBuffer-0.2 ||
+            screenPoint.y < screenEdgeBuffer+0.25 || screenPoint.y > 1 - screenEdgeBuffer-0.2)
         {
             return true;
         }

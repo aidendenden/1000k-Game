@@ -10,6 +10,7 @@ TagManager:
   - PManager
   - WW
   - Kuang
+  - CCC
   layers:
   - Default
   - TransparentFX
