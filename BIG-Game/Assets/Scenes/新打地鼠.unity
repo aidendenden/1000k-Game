@@ -673,10 +673,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 427831545}
-  screenEdgeBuffer: 0.05
+  screenEdgeBuffer: -1
   speed: 8
   randomDirection: {x: 0, y: 0}
-  offset: 5
+  offset: 1
 --- !u!114 &1092295074
 MonoBehaviour:
   m_ObjectHideFlags: 0
