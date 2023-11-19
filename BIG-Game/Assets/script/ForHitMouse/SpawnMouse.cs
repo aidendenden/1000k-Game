@@ -16,7 +16,7 @@ public class SpawnMouse : MonoBehaviour
         timer += Time.deltaTime;
 
         // 如果计时器超过生成间隔时间
-        if (timer >= spawnInterval- (hitpoint.Point/50f*spawnInterval*0.5))
+        if (timer >= spawnInterval- (hitpoint.Point/50f*spawnInterval*0.6))
         {
             // 重置计时器
             timer = 0f;

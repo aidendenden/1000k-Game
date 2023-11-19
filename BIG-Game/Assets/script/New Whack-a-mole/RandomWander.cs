@@ -1,5 +1,6 @@
 using System;
 using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,7 +9,9 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class RandomWander : MonoBehaviour
 {
-   
+
+    public int Kind = 0;
+    private float RunTime = 10;
     public Camera mainCamera;
     public float screenEdgeBuffer = 0.1f;
     public bool isHited = false;
@@ -19,11 +22,21 @@ public class RandomWander : MonoBehaviour
     
     public float rotationSpeed = 5f; // 旋转速度
     private Vector2 targetDirection; // 目标旋转方向
+    private Transform transform;
 
     private void Start()
     {
         randomDirection = Random.insideUnitCircle.normalized;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        transform = GetComponent<Transform>();
+
+        float randomSize = Random.Range(0.5f, 0.8f); // 在指定区间内生成随机大小
+        transform.localScale = new Vector3(randomSize, randomSize, randomSize); // 设置游戏物体的尺寸
+        speed = Random.Range(5f, 9f);
+        if (Kind == 1)
+        {
+            speed = speed * 1.5f;
+        }
     }
     
     
@@ -68,6 +81,36 @@ public class RandomWander : MonoBehaviour
             {
                 randomDirection = Random.insideUnitCircle.normalized;
             }
+        }
+
+        if(Kind == 1)
+        {
+            if (RunTime <= 0)
+            {
+                Vector3 direction = new Vector3(0, 40, 0) - gameObject.transform.position;
+
+                Vector3 normalizedDirection = direction.normalized;
+
+                randomDirection = normalizedDirection;
+
+                newPosition = (Vector2)transform.position + randomDirection * speed * 1.5f * Time.deltaTime;
+            }
+            else { RunTime -= Time.deltaTime; }
+        }
+
+        if (Kind == 0)
+        {
+            if (RunTime*1.5 <= 0)
+            {
+                Vector3 direction = new Vector3(0, 40, 0) - gameObject.transform.position;
+
+                Vector3 normalizedDirection = direction.normalized;
+
+                randomDirection = normalizedDirection;
+
+                newPosition = (Vector2)transform.position + randomDirection * speed * 1.5f * Time.deltaTime;
+            }
+            else { RunTime -= Time.deltaTime; }
         }
 
         if (isHited) {
