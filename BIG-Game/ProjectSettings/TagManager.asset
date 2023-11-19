@@ -12,6 +12,7 @@ TagManager:
   - Kuang
   - CCC
   - JinDu
+  - Level
   layers:
   - Default
   - TransparentFX

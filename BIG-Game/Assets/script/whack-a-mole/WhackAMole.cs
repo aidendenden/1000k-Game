@@ -44,7 +44,7 @@ public class WhackAMole : MonoBehaviour
 
     [Tooltip("关卡列表，每个关卡都有自己的目标分数、目标限制和时间奖励")]
     [SerializeField]
-    public Level[] levels;
+    public List<Level> levels;
 
     [Tooltip("当前所处的关卡。必须达到目标分数才能进入下一关")] 
     public int currentLevel = 0;
@@ -59,8 +59,17 @@ public class WhackAMole : MonoBehaviour
     
     void Start()
     {
-        isPaused = GameManager.Instance.isPaused;
+        //isPaused = GameManager.Instance.isPaused;
 
+        string targetTag = "Level"; // 替换为你要寻找的标签
+
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(targetTag);
+
+        foreach (var VARIABLE in objectsWithTag)
+        {
+            levels.Add(VARIABLE.GetComponent<Level>());
+        }
+        
         spawnPositions = new List<Transform>(GetComponentsInChildren<Transform>(true));
 
         // 移除当前物体自身的Transform组件
@@ -238,7 +247,7 @@ public class WhackAMole : MonoBehaviour
         // If we reached the required number of points, level up!
         if (score >= levels[currentLevel].scoreToNextLevel)
         {
-            if (currentLevel < levels.Length - 1) LevelUp();
+            if (currentLevel < levels.Count - 1) LevelUp();
         }
     }
 
@@ -261,7 +270,7 @@ public class WhackAMole : MonoBehaviour
     void UpdateLevel()
     {
         // Set the maximum number of targets
-        maximumTargets = levels[currentLevel].maximumTargets;
+        maximumTargets += levels[currentLevel].maximumTargets;
 
         // Give time bonus for winning the level
         timeLeft += levels[currentLevel].timeBonus;

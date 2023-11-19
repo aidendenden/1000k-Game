@@ -285,7 +285,7 @@ public class TypingSpeedCalculator : MonoBehaviour
 
         if (inputList[0] == false && inputList[1] == true)
         {
-             Debug.Log("连续开始");
+             //Debug.Log("连续开始");
             isLianXueIng = true;
             //StartCoroutine("kaishi");
 
@@ -299,7 +299,7 @@ public class TypingSpeedCalculator : MonoBehaviour
             isLianXueIng = true;
             UpdateDelegate("chixuzho");
             Vector2 vector2_D = KeyCodeToV(inputNow) - KeyCodeToV(inputPast);
-            Debug.Log("连续中" + vector2_D);
+            //ebug.Log("连续中" + vector2_D);
             PanDuanFangXiang(vector2_D);
             GameEventManager.Instance.Triggered("连续中",transform,vector2_D);
             
@@ -310,7 +310,7 @@ public class TypingSpeedCalculator : MonoBehaviour
         {
             if (!Input.anyKey)
             {
-                Debug.Log("连续结束");
+               // Debug.Log("连续结束");
                 isLianXueIng = false;   
                 EndDelegate("aaa");
                 inputList[0] = false;
@@ -318,7 +318,7 @@ public class TypingSpeedCalculator : MonoBehaviour
 
                 Vector2 vector2_B=Vector2.zero;
                 PanDuanFangXiang(vector2_B);
-                Debug.Log("连续结束" + vector2_B);
+              //  Debug.Log("连续结束" + vector2_B);
                 HuaDongEventEnd.Invoke();
                 GameEventManager.Instance.Triggered("连续结束",transform,vector2_B);
                 
