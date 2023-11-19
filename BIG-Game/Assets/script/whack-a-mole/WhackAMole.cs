@@ -150,11 +150,8 @@ public class WhackAMole : MonoBehaviour
         if (pauseCanvas) pauseCanvas.gameObject.SetActive(false);
 
         //Get the highscore for the player
-#if UNITY_5_3 || UNITY_5_3_OR_NEWER
+
         highScore = PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "HighScore", 0);
-#else
-    			highScore = PlayerPrefs.GetInt(Application.loadedLevelName + "HighScore", 0);
-#endif
 
         //Assign the sound source for easier access
         if (GameObject.FindGameObjectWithTag(soundSourceTag))
