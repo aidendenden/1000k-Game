@@ -248,7 +248,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  shushuHP: 3
+  shushuHP: 7
 --- !u!114 &2793539280573399232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,6 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f099ee6022c02d4ba251687549efa19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWillDis: 0
   onMove: 0
   TouChi:
     m_PersistentCalls:
@@ -565,6 +566,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isDrop: 0
+  Zhong: 3
 --- !u!95 &8542932803099402722
 Animator:
   serializedVersion: 5

@@ -6,12 +6,19 @@ using UnityEngine.Events;
 
 public class ParentSwitcher : MonoBehaviour
 {
+
+    public bool isWillDis = false;
     public bool onMove;
     public UnityEvent TouChi;
     public bool isDrop = false;
+    public float Zhong = 3;
+
+    private float disTime = 5;
     private Animator anim;
     private GameObject KuangZi;
     private HItPoint hItPoint;
+    private bool isPass = false;
+    
 
 
     private void Start()
@@ -31,11 +38,19 @@ public class ParentSwitcher : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)                                                            
     {
         if (collision.gameObject.tag == "TouchPoint" && isDrop)
         {
-            TouChi.Invoke();
+            if (Zhong <=0)
+            {
+                TouChi.Invoke();
+            }
+            else
+            {
+                Zhong--;
+            }
+            
         }
     }
  
@@ -54,6 +69,19 @@ public class ParentSwitcher : MonoBehaviour
         {
             MoveTo();
         }
+
+        if (isDrop&&isWillDis)
+        {
+            if(disTime < 0)
+            {
+                anim.SetTrigger("End");
+                disTime = 5f;
+            }
+            else
+            {
+                disTime -= Time.deltaTime;
+            }
+        }
     }
     public void MoveTo()
     {
@@ -62,6 +90,21 @@ public class ParentSwitcher : MonoBehaviour
 
     public void getPoint()
     {
-        hItPoint.Poing();
+        if(isPass == false)
+        {
+            hItPoint.Poing();
+            isPass = true;
+        }
+        
+    }
+
+    public void LosePoint()
+    {
+        if (isPass == false)
+        {
+            hItPoint.DePoing(3);
+            isPass = true;
+        }
+        
     }
 }

@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class RandomWander : MonoBehaviour
 {
-    
+   
     public Camera mainCamera;
     public float screenEdgeBuffer = 0.1f;
     public bool isHited = false;

@@ -8,6 +8,7 @@ public class SpawnMouse : MonoBehaviour
     public Transform spawnPosition; // 生成位置
     public float spawnInterval = 3f; // 生成间隔时间
     private float timer = 0f; // 计时器
+    public HItPoint hitpoint;
 
     void Update()
     {
@@ -15,7 +16,7 @@ public class SpawnMouse : MonoBehaviour
         timer += Time.deltaTime;
 
         // 如果计时器超过生成间隔时间
-        if (timer >= spawnInterval)
+        if (timer >= spawnInterval- (hitpoint.Point/50f*spawnInterval*0.5))
         {
             // 重置计时器
             timer = 0f;
