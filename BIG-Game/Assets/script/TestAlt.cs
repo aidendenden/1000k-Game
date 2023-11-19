@@ -36,7 +36,7 @@ using UnityEngine;
  
         public void Start()
         {
-            Debug.LogError("构造函数");
+            //Debug.LogError("构造函数");
             // hook keyboard
             IntPtr hModule = GetModuleHandle(IntPtr.Zero);
             hookProc = new LowLevelKeyboardProcDelegate(LowLevelKeyboardProc);
