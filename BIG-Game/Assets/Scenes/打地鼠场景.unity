@@ -1388,7 +1388,7 @@ GameObject:
   - component: {fileID: 1708863221}
   - component: {fileID: 1708863220}
   m_Layer: 0
-  m_Name: "Windows\u70ED\u952E\u5C4F\u853D\u5668"
+  m_Name: "$Windows\u70ED\u952E\u5C4F\u853D\u5668"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
