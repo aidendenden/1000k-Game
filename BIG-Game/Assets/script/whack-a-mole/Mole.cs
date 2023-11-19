@@ -4,47 +4,39 @@ using System.Collections;
 
 public class Mole : MonoBehaviour
 {
-    // A referemce to the Game Controller, which is taken by the first time this script runs, and is remembered across all other scripts of this type
+    // 对游戏控制器的引用，第一次运行此脚本时会获取，并在其他相同类型的脚本中记住
     static GameObject gameController;
 
-    // The animated part of the mole. By default this is taken from this object
+// 地鼠的动画部分。默认情况下，从此对象中获取
     internal Animator moleAnimator;
 
-    [Tooltip("The helmet object of this mole, assigned from inside the mole itself")]
-    public GameObject helmet;
+    [Tooltip("地鼠的头盔对象，从地鼠本身中分配")] public GameObject helmet;
 
-    [Tooltip("The broken helmet that appears when the helmet breaks. This is assigned from the project pane")]
-    public Transform brokenHelmet;
+    [Tooltip("头盔损坏时出现的破碎头盔。这是从项目面板中分配的")] public Transform brokenHelmet;
 
-    [Tooltip("The health of the mole when it's wearing a helmet")]
-    public int helmetHealth = 2;
+    [Tooltip("地鼠佩戴头盔时的生命值")] public int helmetHealth = 2;
 
-    // The health of the mole when it's not wearing a helmet
+// 地鼠不佩戴头盔时的生命值
     internal int health = 1;
 
-    [Tooltip("A multiplier for the bonus we get when hitting this target")]
-    public int bonusMultiplier = 1;
+    [Tooltip("击中此目标时的奖励倍数")] public int bonusMultiplier = 1;
 
-    [Tooltip("The tag of the object that can hit this mole")]
-    public string targetTag = "Player";
+    [Tooltip("可以击中此地鼠的对象的标签")] public string targetTag = "TouchPoint";
 
-    // Is the mole dead?
+// 地鼠是否死亡？
     internal bool isDead = false;
 
-    // How long to wait before showing the mole
+// 在显示地鼠之前等待的时间
     internal float showTime = 0;
 
-    // How long to wait before hiding the mole, after it has been revealed
+// 在地鼠显示后等待多长时间再隐藏
     internal float hideDelay = 0;
 
-    [Tooltip("The animation name when showing a mole")]
-    public string animationShow = "MoleShow";
+    [Tooltip("显示地鼠时的动画名称")] public string animationShow = "MoleShow";
 
-    [Tooltip("The animation name when hiding a mole")]
-    public string animationHide = "MoleHide";
+    [Tooltip("隐藏地鼠时的动画名称")] public string animationHide = "MoleHide";
 
-    [Tooltip("A list of animations when the mole dies. The animation is chosen randomly from the list")]
-    public string[] animationDie = { "MoleSmack", "MoleWhack", "MoleThud" };
+    [Tooltip("地鼠死亡时的动画列表。从列表中随机选择一个动画")] public string[] animationDie = { "MoleSmack", "MoleWhack", "MoleThud" };
 
     // Use this for initialization
     void Start()
