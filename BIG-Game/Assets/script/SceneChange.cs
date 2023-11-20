@@ -11,9 +11,16 @@ public class SceneChange : MonoBehaviour
 
     public int sceneNum;
 
+    private bool changeing = false;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        LoadNextLevel();
+        if (changeing == false)
+        {
+            LoadNextLevel();
+            changeing = true;
+        }
+        
     }
 
     public void LoadNextLevel()
