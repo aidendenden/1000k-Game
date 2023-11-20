@@ -26,18 +26,18 @@ public class HItPoint : MonoBehaviour
             spawnMouse1.prefabsToSpawn[0] = BaoShu;
             spawnMouse2.prefabsToSpawn[0] = BaoShu;
         }
-        if (Point == 16)
+        if (Point == 12)
         {
             spawnMouse1.prefabsToSpawn[1] = BaoShu;
             spawnMouse2.prefabsToSpawn[1] = BaoShu;
         }
-        if (Point == 26)
+        if (Point == 22)
         {
             spawnMouse1.prefabsToSpawn[2] = BaoShu;
             spawnMouse2.prefabsToSpawn[2] = BaoShu;
 
         }
-        if (Point == 40)
+        if (Point == 30)
         {
             spawnMouse1.prefabsToSpawn[3] = BaoShu;
             spawnMouse2.prefabsToSpawn[3] = BaoShu;
@@ -58,18 +58,18 @@ public class HItPoint : MonoBehaviour
                 spawnMouse1.prefabsToSpawn[0] = HaoShu1;
                 spawnMouse2.prefabsToSpawn[0] = HaoShu1;
             }
-            if (Point < 16)
+            if (Point < 12)
             {
                 spawnMouse1.prefabsToSpawn[1] = HaoShu2;
                 spawnMouse2.prefabsToSpawn[1] = HaoShu2;
             }
-            if (Point < 26)
+            if (Point < 22)
             {
                 spawnMouse1.prefabsToSpawn[2] =HaoShu3;
                 spawnMouse2.prefabsToSpawn[2] = HaoShu3;
             }
 
-            if (Point < 40)
+            if (Point < 30)
             {
                 spawnMouse1.prefabsToSpawn[3] = HaoShu4;
                 spawnMouse2.prefabsToSpawn[3] = HaoShu4;

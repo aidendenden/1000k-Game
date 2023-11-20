@@ -7,7 +7,7 @@ public class SceneChange : MonoBehaviour
 {
     public Animator transition;
 
-    public float transitionTime = 1f;
+    public float transitionTime = 3f;
 
     public int sceneNum;
 
