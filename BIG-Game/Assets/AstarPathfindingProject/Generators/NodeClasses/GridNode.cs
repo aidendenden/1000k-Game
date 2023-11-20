@@ -37,7 +37,6 @@ namespace Pathfinding {
 		const int GridFlagsConnectionOffset = 0;
 		const int GridFlagsConnectionBit0 = 1 << GridFlagsConnectionOffset;
 		const int GridFlagsConnectionMask = 0xFF << GridFlagsConnectionOffset;
-		const int GridFlagsAxisAlignedConnectionMask = 0xF << GridFlagsConnectionOffset;
 
 		const int GridFlagsEdgeNodeOffset = 10;
 		const int GridFlagsEdgeNodeMask = 1 << GridFlagsEdgeNodeOffset;
@@ -45,12 +44,6 @@ namespace Pathfinding {
 		public override bool HasConnectionsToAllEightNeighbours {
 			get {
 				return (InternalGridFlags & GridFlagsConnectionMask) == GridFlagsConnectionMask;
-			}
-		}
-
-		public override bool HasConnectionsToAllAxisAlignedNeighbours {
-			get {
-				return (InternalGridFlags & GridFlagsAxisAlignedConnectionMask) == GridFlagsAxisAlignedConnectionMask;
 			}
 		}
 
@@ -149,7 +142,7 @@ namespace Pathfinding {
 					var other = GetNeighbourAlongDirection(i) as GridNode;
 					if (other != null) {
 						// Remove reverse connection. See doc for GridGraph.neighbourOffsets to see which indices are used for what.
-						other.SetConnectionInternal(OppositeConnectionDirection(i), false);
+						other.SetConnectionInternal(i < 4 ? ((i + 2) % 4) : (((i-2) % 4) + 4), false);
 					}
 				}
 			}

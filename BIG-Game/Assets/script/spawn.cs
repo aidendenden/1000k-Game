@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class spawn : MonoBehaviour
+public class spawnOld : MonoBehaviour
 {
     public GameObject objectPrefab; // 用于生成的物体预制体
 

@@ -49,8 +49,6 @@ namespace Pathfinding {
 				}
 
 				try {
-					((IPathInternals)path).AdvanceState(PathState.Returning);
-
 					// Return the path
 					((IPathInternals)path).ReturnPath();
 				} catch (System.Exception e) {

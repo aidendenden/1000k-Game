@@ -136,8 +136,6 @@ namespace Pathfinding {
 		/// <summary>Number of nodes in this graph</summary>
 		public int nodeCount { get; protected set; }
 
-		public override bool isScanned => nodes != null;
-
 		/// <summary>
 		/// Distance query mode.
 		/// [Open online documentation to see images]
@@ -172,15 +170,6 @@ namespace Pathfinding {
 			if (nodes == null) return;
 			var count = nodeCount;
 			for (int i = 0; i < count; i++) action(nodes[i]);
-		}
-
-		/// <summary>
-		/// True if the point is inside the bounding box of this graph.
-		///
-		/// Warning: A point graph has no limits to its bounding box, so this method always returns true for point graphs.
-		/// </summary>
-		public override bool IsInsideBounds (Vector3 point) {
-			return true;
 		}
 
 		public override NNInfoInternal GetNearest (Vector3 position, NNConstraint constraint, GraphNode hint) {

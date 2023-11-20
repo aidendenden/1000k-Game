@@ -41,7 +41,6 @@ namespace Pathfinding {
 		/// [Open online documentation to see images]
 		/// </summary>
 		public float updateInterval;
-		internal AstarPath astar;
 
 		/// <summary>Last time navmesh cuts were applied</summary>
 		float lastUpdateTime = float.NegativeInfinity;

@@ -37,7 +37,7 @@ namespace Pathfinding {
 	[AddComponentMenu("Pathfinding/Modifiers/Raycast Modifier")]
 	[RequireComponent(typeof(Seeker))]
 	[System.Serializable]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_raycast_modifier.php")]
+	[HelpURL("http://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_raycast_modifier.php")]
 	public class RaycastModifier : MonoModifier {
 #if UNITY_EDITOR
 		[UnityEditor.MenuItem("CONTEXT/Seeker/Add Raycast Simplifier Modifier")]
@@ -49,7 +49,7 @@ namespace Pathfinding {
 		public override int Order { get { return 40; } }
 
 		/// <summary>Use Physics.Raycast to simplify the path</summary>
-		public bool useRaycasting = false;
+		public bool useRaycasting = true;
 
 		/// <summary>
 		/// Layer mask used for physics raycasting.
@@ -89,8 +89,7 @@ namespace Pathfinding {
 
 		/// <summary>Use raycasting on the graphs. Only currently works with GridGraph and NavmeshGraph and RecastGraph. </summary>
 		[Tooltip("Use raycasting on the graphs. Only currently works with GridGraph and NavmeshGraph and RecastGraph. This is a pro version feature.")]
-		public bool useGraphRaycasting = true;
-
+		public bool useGraphRaycasting;
 
 		/// <summary>
 		/// Higher quality modes will try harder to find a shorter path.

@@ -7,7 +7,6 @@ namespace Pathfinding {
 	using Pathfinding.Util;
 
 	[AddComponentMenu("Pathfinding/AI/RichAI (3D, for navmesh)")]
-	[UniqueComponent(tag = "ai")]
 	/// <summary>
 	/// Advanced AI for navmesh based graphs.
 	///
@@ -217,13 +216,6 @@ namespace Pathfinding {
 			}
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::endOfPath</summary>
-		public override Vector3 endOfPath {
-			get {
-				return hasPath ? richPath.Endpoint : destination;
-			}
-		}
-
 		/// <summary>
 		/// \copydoc Pathfinding::IAstarAI::Teleport
 		///
@@ -340,11 +332,7 @@ namespace Pathfinding {
 			richPath.GetRemainingPath(buffer, simulatedPosition, out stale);
 		}
 
-		/// <summary>
-		/// Called when the end of the path is reached.
-		///
-		/// Deprecated: Avoid overriding this method. Instead poll the <see cref="reachedDestination"/> or <see cref="reachedEndOfPath"/> properties.
-		/// </summary>
+		/// <summary>Called when the end of the path is reached</summary>
 		protected virtual void OnTargetReached () {
 		}
 

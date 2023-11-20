@@ -21,7 +21,7 @@ namespace Pathfinding.RVO {
 	/// </summary>
 	[ExecuteInEditMode]
 	[AddComponentMenu("Pathfinding/Local Avoidance/RVO Simulator")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.php")]
+	[HelpURL("http://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.php")]
 	public class RVOSimulator : VersionedMonoBehaviour {
 		/// <summary>First RVOSimulator in the scene (usually there is only one)</summary>
 		public static RVOSimulator active { get; private set; }
@@ -124,15 +124,9 @@ namespace Pathfinding.RVO {
 			sim.Update();
 		}
 
-		void OnDisable () {
+		void OnDestroy () {
 			active = null;
-			if (simulator != null) {
-				simulator.OnDestroy();
-				simulator = null;
-			}
-#if UNITY_EDITOR
-			gizmos.ClearCache();
-#endif
+			if (simulator != null) simulator.OnDestroy();
 		}
 
 #if UNITY_EDITOR
@@ -190,6 +184,10 @@ namespace Pathfinding.RVO {
 
 				gizmos.FinalizeDraw();
 			}
+		}
+
+		void OnDisable () {
+			gizmos.ClearCache();
 		}
 #endif
 	}

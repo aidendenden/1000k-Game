@@ -513,17 +513,6 @@ namespace Pathfinding {
 		/// <summary>Closest point on the surface of this node to the point p</summary>
 		public abstract Vector3 ClosestPointOnNode(Vector3 p);
 
-		/// <summary>Checks if point is inside the node when seen from above</summary>
-		public virtual bool ContainsPoint (Int3 point) {
-			return ContainsPoint((Vector3)point);
-		}
-
-		/// <summary>Checks if point is inside the node when seen from above.</summary>
-		public abstract bool ContainsPoint(Vector3 point);
-
-		/// <summary>Checks if point is inside the node in graph space</summary>
-		public abstract bool ContainsPointInGraphSpace(Int3 point);
-
 		/// <summary>
 		/// Hash code used for checking if the gizmos need to be updated.
 		/// Will change when the gizmos for the node might change.
@@ -589,8 +578,6 @@ namespace Pathfinding {
 		/// See: <see cref="RemoveConnection"/>
 		///
 		/// Note: If you modify this array or the contents of it you must call <see cref="SetConnectivityDirty"/>.
-		///
-		/// May be null if the node has no connections.
 		/// </summary>
 		public Connection[] connections;
 
@@ -635,7 +622,7 @@ namespace Pathfinding {
 		}
 
 		public override bool ContainsConnection (GraphNode node) {
-			if (connections != null) for (int i = 0; i < connections.Length; i++) if (connections[i].node == node) return true;
+			for (int i = 0; i < connections.Length; i++) if (connections[i].node == node) return true;
 			return false;
 		}
 
@@ -752,6 +739,34 @@ namespace Pathfinding {
 				}
 			}
 		}
+
+		/// <summary>Checks if point is inside the node when seen from above</summary>
+		public virtual bool ContainsPoint (Int3 point) {
+			return ContainsPoint((Vector3)point);
+		}
+
+		/// <summary>
+		/// Checks if point is inside the node when seen from above.
+		///
+		/// Note that <see cref="ContainsPointInGraphSpace"/> is faster than this method as it avoids
+		/// some coordinate transformations. If you are repeatedly calling this method
+		/// on many different nodes but with the same point then you should consider
+		/// transforming the point first and then calling ContainsPointInGraphSpace.
+		/// <code>
+		/// Int3 p = (Int3)graph.transform.InverseTransform(point);
+		///
+		/// node.ContainsPointInGraphSpace(p);
+		/// </code>
+		/// </summary>
+		public abstract bool ContainsPoint(Vector3 point);
+
+		/// <summary>
+		/// Checks if point is inside the node in graph space.
+		///
+		/// In graph space the up direction is always the Y axis so in principle
+		/// we project the triangle down on the XZ plane and check if the point is inside the 2D triangle there.
+		/// </summary>
+		public abstract bool ContainsPointInGraphSpace(Int3 point);
 
 		public override int GetGizmoHashCode () {
 			var hash = base.GetGizmoHashCode();

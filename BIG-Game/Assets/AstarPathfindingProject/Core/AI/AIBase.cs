@@ -322,13 +322,11 @@ namespace Pathfinding {
 			}
 		}
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::desiredVelocity</summary>
-		public Vector3 desiredVelocity {
-			get { return lastDeltaTime > 0.00001f ? movementPlane.ToWorld(lastDeltaPosition / lastDeltaTime, verticalVelocity) : Vector3.zero; }
-		}
-
-		/// <summary>\copydoc Pathfinding::IAstarAI::endOfPath</summary>
-		public abstract Vector3 endOfPath { get; }
+		/// <summary>
+		/// Velocity that this agent wants to move with.
+		/// Includes gravity and local avoidance if applicable.
+		/// </summary>
+		public Vector3 desiredVelocity { get { return lastDeltaTime > 0.00001f ? movementPlane.ToWorld(lastDeltaPosition / lastDeltaTime, verticalVelocity) : Vector3.zero; } }
 
 		/// <summary>\copydoc Pathfinding::IAstarAI::isStopped</summary>
 		public bool isStopped { get; set; }
@@ -526,7 +524,7 @@ namespace Pathfinding {
 				seeker.CancelCurrentPathRequest();
 				seeker.StartPath(path);
 				autoRepath.DidRecalculatePath(destination);
-			} else if (path.PipelineState >= PathState.Returning) {
+			} else if (path.PipelineState == PathState.Returned) {
 				// Path has already been calculated
 
 				// We might be calculating another path at the same time, and we don't want that path to override this one. So cancel it.

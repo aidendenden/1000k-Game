@@ -111,7 +111,7 @@ namespace Pathfinding {
 
 		void GetClosestWalkableNodesToChildrenRecursively (Transform tr, List<GraphNode> nodes) {
 			foreach (Transform ch in tr) {
-				var info = AstarPath.active.GetNearest(ch.position, NNConstraint.Walkable);
+				var info = AstarPath.active.GetNearest(ch.position, NNConstraint.Default);
 				if (info.node != null && info.node.Walkable) {
 					nodes.Add(info.node);
 				}

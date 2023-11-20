@@ -16,16 +16,16 @@ public class GameEventManager : MonoBehaviour
 
     public static GameEventManager Instance => Lazy.Value;
 
-    public delegate void TriggerEventHandler(string message, Transform _transform,Vector2 v);
+    public delegate void TriggerEventHandler(string message, Transform _transform,Vector3 v);
 
     public static event TriggerEventHandler OnTrigger;
 
 
-    public void Triggered(string message, Transform _transform,Vector2 v)
+    public void Triggered(string message, Transform _transform, Vector3 _vector3)
     {
         Debug.Log("Triggered: " + message);
         if (OnTrigger != null)
-            OnTrigger(message, _transform,v);
+            OnTrigger(message, _transform, _vector3);
     }
 
     public void AddListener(TriggerEventHandler listener)

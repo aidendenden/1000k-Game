@@ -106,9 +106,8 @@ namespace Pathfinding {
 				for (int i = 0; i < attr.Length; i++) {
 					string tag = (attr[i] as UniqueComponentAttribute).tag;
 					foreach (var other in (target as MonoBehaviour).GetComponents<MonoBehaviour>()) {
-						// Note: other can be null if some scripts are missing references
-						if (other == null || !other.enabled || other == target) continue;
-						if (other.GetType().GetCustomAttributes(typeof(UniqueComponentAttribute), true).Where(c => (c as UniqueComponentAttribute).tag == tag).Any()) {
+						if (!other.enabled || other == target) continue;
+						if (other.GetType().GetCustomAttributes(typeof(UniqueComponentAttribute), true).Select(c => (c as UniqueComponentAttribute).tag == tag).Any()) {
 							EditorGUILayout.HelpBox("This component and " + other.GetType().Name + " cannot be used at the same time", MessageType.Warning);
 						}
 					}

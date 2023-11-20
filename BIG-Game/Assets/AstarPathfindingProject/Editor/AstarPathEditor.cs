@@ -78,9 +78,6 @@ namespace Pathfinding {
 			// Make sure all references are set up to avoid NullReferenceExceptions
 			script.ConfigureReferencesInternal();
 
-			// Hide position/rotation/scale tools for the AstarPath object. Instead, OnSceneGUI will draw position tools for each graph
-			Tools.hidden = true;
-
 			Undo.undoRedoPerformed += OnUndoRedoPerformed;
 
 			// Search the assembly for graph types and graph editors
@@ -129,7 +126,6 @@ namespace Pathfinding {
 
 			SetAstarEditorSettings();
 			CheckGraphEditors();
-			Tools.hidden = false;
 
 			SaveGraphsAndUndo();
 
@@ -207,6 +203,14 @@ namespace Pathfinding {
 				MenuScan();
 			}
 
+
+#if ProfileAstar
+			if (GUILayout.Button("Log Profiles")) {
+				AstarProfiler.PrintResults();
+				AstarProfiler.PrintFastResults();
+				AstarProfiler.Reset();
+			}
+#endif
 
 			// Handle undo
 			SaveGraphsAndUndo(storedEventType, storedEventCommand);
@@ -400,7 +404,7 @@ namespace Pathfinding {
 			// Check if the latest version is newer than this version
 			if (FullyDefinedVersion(newVersion) > FullyDefinedVersion(AstarPath.Version)) {
 				GUIUtilityx.PushTint(Color.green);
-				if (GUILayout.Button((beta ? "Beta" : "New") + " Version Available! "+newVersion, thinHelpBox, GUILayout.Height(16))) {
+				if (GUILayout.Button((beta ? "Beta" : "New") + " Version Available! "+newVersion, thinHelpBox, GUILayout.Height(15))) {
 					Application.OpenURL(AstarUpdateChecker.GetURL("download"));
 				}
 				GUIUtilityx.PopTint();
@@ -702,7 +706,7 @@ namespace Pathfinding {
 
 			if (script.data.cacheStartup && script.data.file_cachedStartup != null) {
 				GUIUtilityx.PushTint(Color.yellow);
-				GUILayout.Label("Startup cached", thinHelpBox, GUILayout.Height(16));
+				GUILayout.Label("Startup cached", thinHelpBox, GUILayout.Height(15));
 				GUILayout.Space(20);
 				GUIUtilityx.PopTint();
 			}
@@ -749,6 +753,16 @@ namespace Pathfinding {
 				}
 
 				GUILayout.EndHorizontal();
+
+				if (script.data.data_cachedStartup != null && script.data.data_cachedStartup.Length > 0) {
+					EditorGUILayout.HelpBox("Storing the cached starup data on the AstarPath object has been deprecated. It is now stored " +
+						"in a separate file.", MessageType.Error);
+
+					if (GUILayout.Button("Transfer cache data to separate file")) {
+						script.data.file_cachedStartup = SaveGraphData(script.data.data_cachedStartup);
+						script.data.data_cachedStartup = null;
+					}
+				}
 
 				GUILayout.Space(5);
 
@@ -887,15 +901,8 @@ namespace Pathfinding {
 			alwaysVisibleArea.End();
 		}
 
-		readonly string[] heuristicOptimizationOptions = new [] {
-			"None",
-			"Random (low quality)",
-			"RandomSpreadOut (high quality)",
-			"Custom"
-		};
-
 		void DrawHeuristicOptimizationSettings () {
-			script.euclideanEmbedding.mode = (HeuristicOptimizationMode)EditorGUILayout.Popup(new GUIContent("Heuristic Optimization"), (int)script.euclideanEmbedding.mode, heuristicOptimizationOptions);
+			script.euclideanEmbedding.mode = (HeuristicOptimizationMode)EditorGUILayout.EnumPopup(new GUIContent("Heuristic Optimization"), script.euclideanEmbedding.mode);
 
 			EditorGUI.indentLevel++;
 			if (script.euclideanEmbedding.mode == HeuristicOptimizationMode.Random) {
@@ -1178,12 +1185,7 @@ namespace Pathfinding {
 			GraphEditor result;
 
 			if (graphEditorTypes.ContainsKey(graphType)) {
-				var graphEditorType = graphEditorTypes[graphType].editorType;
-				result = System.Activator.CreateInstance(graphEditorType) as GraphEditor;
-
-				// Deserialize editor settings
-				var editorData = (graph as IGraphInternals).SerializedEditorSettings;
-				if (editorData != null) Pathfinding.Serialization.TinyJsonDeserializer.Deserialize(editorData, graphEditorType, result, script.gameObject);
+				result = System.Activator.CreateInstance(graphEditorTypes[graphType].editorType) as GraphEditor;
 			} else {
 				Debug.LogError("Couldn't find an editor for the graph type '" + graphType + "' There are " + graphEditorTypes.Count + " available graph editors");
 				result = new GraphEditor();
@@ -1193,7 +1195,6 @@ namespace Pathfinding {
 			result.fadeArea = new FadeArea(graph.open, this, level1AreaStyle, level1LabelStyle);
 			result.infoFadeArea = new FadeArea(graph.infoScreenOpen, this, null, null);
 			result.target = graph;
-
 			result.OnEnable();
 			return result;
 		}
@@ -1330,6 +1331,11 @@ namespace Pathfinding {
 				script.data.DeserializeGraphs(bytes);
 				// Make sure every graph has a graph editor
 				CheckGraphEditors();
+				// Deserialize editor settings
+				for (int i = 0; i < graphEditors.Length; i++) {
+					var data = (graphEditors[i].target as IGraphInternals).SerializedEditorSettings;
+					if (data != null) Pathfinding.Serialization.TinyJsonDeserializer.Deserialize(data, graphEditors[i].GetType(), graphEditors[i], script.gameObject);
+				}
 			} catch (System.Exception e) {
 				Debug.LogError("Failed to deserialize graphs");
 				Debug.LogException(e);

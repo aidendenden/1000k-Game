@@ -20,7 +20,7 @@ namespace Pathfinding.Examples {
 	/// See: <see cref="Pathfinding.AIPath"/>
 	/// See: <see cref="Pathfinding.RichAI"/>
 	/// </summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_mecanim_bridge.php")]
+	[HelpURL("http://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_mecanim_bridge.php")]
 	public class MecanimBridge : VersionedMonoBehaviour {
 		public float velocitySmoothing = 1;
 

@@ -42,11 +42,13 @@ namespace Pathfinding {
 	/// Note: Usually you do not want to use this type of link, you want to use NodeLink2 or NodeLink (sorry for the not so descriptive names).
 	/// </summary>
 	[AddComponentMenu("Pathfinding/Link3")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_node_link3.php")]
+	[HelpURL("http://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_node_link3.php")]
 	public class NodeLink3 : GraphModifier {
 		protected static Dictionary<GraphNode, NodeLink3> reference = new Dictionary<GraphNode, NodeLink3>();
 		public static NodeLink3 GetNodeLink (GraphNode node) {
-			reference.TryGetValue(node, out NodeLink3 v);
+			NodeLink3 v;
+
+			reference.TryGetValue(node, out v);
 			return v;
 		}
 
@@ -59,6 +61,9 @@ namespace Pathfinding {
 		/// lead to a lower total cost unless you also adjust the Heuristic Scale in A* Inspector -> Settings -> Pathfinding or disable the heuristic altogether.
 		/// </summary>
 		public float costFactor = 1.0f;
+
+		/// <summary>Make a one-way connection</summary>
+		public bool oneWay = false;
 
 		public Transform StartTransform {
 			get { return transform; }

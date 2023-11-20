@@ -143,6 +143,8 @@ namespace Pathfinding.Voxels {
 		/// <param name="nvp">Maximum allowed vertices per polygon.</param>
 		/// <param name="mesh">Results will be written to this mesh.</param>
 		public void BuildPolyMesh (VoxelContourSet cset, int nvp, out VoxelMesh mesh) {
+			AstarProfiler.StartProfile("Build Poly Mesh");
+
 			nvp = 3;
 
 			int maxVertices = 0;
@@ -218,6 +220,7 @@ namespace Pathfinding.Voxels {
 			ArrayPool<int>.Release(ref areas);
 			ArrayPool<int>.Release(ref indices);
 			ArrayPool<int>.Release(ref tris);
+			AstarProfiler.EndProfile("Build Poly Mesh");
 		}
 
 		int Triangulate (int n, int[] verts, ref int[] indices, ref int[] tris) {

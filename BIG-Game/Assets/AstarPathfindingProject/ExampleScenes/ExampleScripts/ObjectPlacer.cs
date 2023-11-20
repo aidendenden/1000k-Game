@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Pathfinding.Examples {
 	/// <summary>Small sample script for placing obstacles</summary>
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_object_placer.php")]
+	[HelpURL("http://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_examples_1_1_object_placer.php")]
 	public class ObjectPlacer : MonoBehaviour {
 		/// <summary>
 		/// GameObject to place.
@@ -17,13 +17,9 @@ namespace Pathfinding.Examples {
 		/// <summary>Issue a graph update object after placement</summary>
 		public bool issueGUOs = true;
 
-		float lastPlacedTime;
-
 		/// <summary>Update is called once per frame</summary>
 		void Update () {
-			// Check if P is being pressed.
-			// Don't place objects if ctrl is pressed to avoid conflicts with the pause shortcut (ctrl+shift+P)
-			if (!Input.GetKey(KeyCode.LeftControl) && (Input.GetKeyDown("p") || (Input.GetKey("p") && Time.time - lastPlacedTime > 0.3f))) {
+			if (Input.GetKeyDown("p")) {
 				PlaceObject();
 			}
 
@@ -33,7 +29,6 @@ namespace Pathfinding.Examples {
 		}
 
 		public void PlaceObject () {
-			lastPlacedTime = Time.time;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 

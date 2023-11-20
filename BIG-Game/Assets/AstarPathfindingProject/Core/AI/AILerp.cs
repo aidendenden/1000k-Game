@@ -37,8 +37,7 @@ namespace Pathfinding {
 	/// </summary>
 	[RequireComponent(typeof(Seeker))]
 	[AddComponentMenu("Pathfinding/AI/AILerp (2D,3D)")]
-	[UniqueComponent(tag = "ai")]
-	[HelpURL("https://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_a_i_lerp.php")]
+	[HelpURL("http://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_a_i_lerp.php")]
 	public class AILerp : VersionedMonoBehaviour, IAstarAI {
 		/// <summary>
 		/// Determines how often it will search for new paths.
@@ -209,13 +208,6 @@ namespace Pathfinding {
 				} else {
 					simulatedRotation = value;
 				}
-			}
-		}
-
-		/// <summary>\copydoc Pathfinding::IAstarAI::endOfPath</summary>
-		public Vector3 endOfPath {
-			get {
-				return interpolator.valid ? interpolator.endPoint : destination;
 			}
 		}
 
@@ -481,8 +473,6 @@ namespace Pathfinding {
 		/// add it here.
 		/// You can also create a new script which inherits from this one
 		/// and override the function in that script.
-		///
-		/// Deprecated: Avoid overriding this method. Instead poll the <see cref="reachedDestination"/> or <see cref="reachedEndOfPath"/> properties.
 		/// </summary>
 		public virtual void OnTargetReached () {
 		}
@@ -585,7 +575,7 @@ namespace Pathfinding {
 				seeker.CancelCurrentPathRequest();
 				seeker.StartPath(path);
 				autoRepath.DidRecalculatePath(destination);
-			} else if (path.PipelineState >= PathState.Returning) {
+			} else if (path.PipelineState == PathState.Returned) {
 				// Path has already been calculated
 
 				// We might be calculating another path at the same time, and we don't want that path to override this one. So cancel it.
