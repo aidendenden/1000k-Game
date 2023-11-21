@@ -763,7 +763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 755836217}
   transitionTime: 2.5
-  sceneNum: 5
+  sceneNum: 4
 --- !u!61 &1152113538
 BoxCollider2D:
   m_ObjectHideFlags: 0
