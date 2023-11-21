@@ -278,18 +278,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.014357567, y: -0.3638537}
+  m_Offset: {x: 0.105258465, y: -0.13143921}
   m_SpriteTilingProperty:
-    border: {x: 0.25, y: 0.25, z: 0.25, w: 0.25}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 6.699655, y: 6.7695894}
+    oldSize: {x: 2.48, y: 2.62}
+    newSize: {x: 10, y: 10}
     adaptiveTilingThreshold: 0.5
-    drawMode: 2
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.767083, y: 5.9532113}
+  m_Size: {x: 9.7545, y: 9.836187}
   m_EdgeRadius: 0
 --- !u!212 &216438492
 SpriteRenderer:
@@ -332,12 +332,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
-  m_Color: {r: 0.9528302, g: 0.23970564, b: 0.23970564, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 81b3b7165a1de6d49986c898893bac1e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 6.699655, y: 6.7695894}
+  m_DrawMode: 1
+  m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -352,7 +352,7 @@ Transform:
   m_GameObject: {fileID: 216438489}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.59, y: 11.2012, z: 0}
+  m_LocalPosition: {x: -0.59, y: 10.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -850,7 +850,7 @@ Transform:
   m_GameObject: {fileID: 1152113536}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -7.89, z: 0}
+  m_LocalPosition: {x: -0.54, y: -7.89, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1592,7 +1592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1069215699198689783, guid: 657b32c1cd2bee84a9b5c4bdce4af68f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5292598100786408217, guid: 657b32c1cd2bee84a9b5c4bdce4af68f, type: 3}
       propertyPath: m_LocalPosition.x
