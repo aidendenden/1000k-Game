@@ -1,15 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HPTiao : MonoBehaviour
 {
     public GameObject[] Tiao;
     public FSMTouZi fsmTouZi;
-  
+    public int HpAA = 3;
+    public int Kind = 0;
+    public UnityEvent HpDown;
+    public UnityEvent ZeroHp;
+
     void Update()
     {
-        SetActiveObjects(Tiao, fsmTouZi.parameter.Hp);
+        if (Kind == 0)
+        {
+            SetActiveObjects(Tiao, fsmTouZi.parameter.Hp);
+        }
+        if (Kind == 1)
+        {
+            SetActiveObjects(Tiao, HpAA);
+        }
+
     }
 
 
@@ -27,5 +40,23 @@ public class HPTiao : MonoBehaviour
             }
         }
     }
+
+    public void HPdown(int a )
+    {
+        if (HpAA -a >= 0)
+        {
+            HpAA -= a;
+        }
+        else
+        {
+            HpAA = 0;
+        }
+
+        if (HpAA ==0)
+        {
+            ZeroHp.Invoke();
+        }
+    }
+
 
 }

@@ -18,7 +18,8 @@ public class ParentSwitcher : MonoBehaviour
     private GameObject KuangZi;
     private HItPoint hItPoint;
     private bool isPass = false;
-    
+    private HPTiao hPTiao;
+    private bool iscanBeTouch = true;
 
 
     private void Start()
@@ -26,6 +27,7 @@ public class ParentSwitcher : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         KuangZi = GameObject.FindGameObjectWithTag("Kuang");
         hItPoint = GameObject.FindGameObjectWithTag("JinDu").GetComponent<HItPoint>();
+        hPTiao = GameObject.FindGameObjectWithTag("Hpaa").GetComponent<HPTiao>();
     }
     public void SwitchParent()
     {
@@ -38,13 +40,18 @@ public class ParentSwitcher : MonoBehaviour
         
     }
 
+    public void HPdownn()
+    {
+        hPTiao.HpDown.Invoke();
+    }
     private void OnTriggerEnter2D(Collider2D collision)                                                            
     {
-        if (collision.gameObject.tag == "TouchPoint" && isDrop)
+        if (collision.gameObject.tag == "TouchPoint" && isDrop&& iscanBeTouch)
         {
             if (Zhong <=0)
             {
                 TouChi.Invoke();
+                iscanBeTouch = false;
             }
             else
             {

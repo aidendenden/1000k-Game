@@ -8,6 +8,8 @@ public class MouseHitt : MonoBehaviour
     public UnityEvent beShot;
     public UnityEvent beHit;
     public float shushuHP = 3;
+    public HPTiao hPTiao;
+
 
 
     private void OnCollisionEnter2D(Collision2D collision)
