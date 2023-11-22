@@ -9,6 +9,7 @@ public class CircleTimerSprite : MonoBehaviour
     [Header("倒计时时长")] public float duration = 10;
 
     public SpriteRenderer tailCapImage;
+    
 
     public float CurrentTime { get; private set; }
 
@@ -23,7 +24,10 @@ public class CircleTimerSprite : MonoBehaviour
 
     public CountDownSystem countDownSystem;
     public int index;
-    
+
+
+    public bool NowPass = false;
+
     public float fillAmount
     {
         get { return _fillAmount; }
@@ -43,8 +47,9 @@ public class CircleTimerSprite : MonoBehaviour
            // Debug.Log("www21212");
             CurrentTime += Time.deltaTime;
 
-            if (CurrentTime >= duration)
+            if (CurrentTime >= duration || NowPass)
             {
+                NowPass = false;
                 isPaused = true;
                 CurrentTime = duration;
                 countDownSystem.DidFinishedTimer(index);

@@ -8,3 +8,4 @@ BIG-Game/Assembly-CSharp-Editor-firstpass.csproj
 *.sln
 BIG-Game/.idea
 BIG-Game/obj
+BIG-Game/.vs

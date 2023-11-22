@@ -239,7 +239,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   screenEdgeBuffer: 0
   isHited: 0
-  speed: 10
+  speed: 17
   randomDirection: {x: 0, y: 0}
   offset: 1
   rotationSpeed: 7
@@ -396,8 +396,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b7ba5c89fd94ee34e830888a2c6fb970, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.368
-  m_Pitch: 1
+  m_Volume: 0.6
+  m_Pitch: 1.2
   Loop: 0
   Mute: 0
   Spatialize: 0

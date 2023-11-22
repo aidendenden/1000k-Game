@@ -5,9 +5,12 @@ public class ForJueSe : MonoBehaviour
     private Animator ani;
     private SpriteRenderer spriteRenderer;
     private float coldTime = 1f;
+    private PointManager pointManager;
     private void Start()
     {
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        pointManager.ZeroMusicPoint();
         if (spriteRenderer == null)
         {
             Debug.LogWarning("SpriteRenderer component not found!");
@@ -24,6 +27,7 @@ public class ForJueSe : MonoBehaviour
 
     private void Update()
     {
+        pointManager.addTime(Time.deltaTime);
         if (coldTime > 0)
         {
             coldTime -= Time.deltaTime;

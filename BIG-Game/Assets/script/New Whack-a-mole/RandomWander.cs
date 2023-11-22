@@ -23,19 +23,21 @@ public class RandomWander : MonoBehaviour
     public float rotationSpeed = 5f; // 旋转速度
     private Vector2 targetDirection; // 目标旋转方向
     private Transform transform;
+    private PointManager pointManager;
 
     private void Start()
     {
         randomDirection = Random.insideUnitCircle.normalized;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         transform = GetComponent<Transform>();
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
 
         float randomSize = Random.Range(0.5f, 0.8f); // 在指定区间内生成随机大小
         transform.localScale = new Vector3(randomSize, randomSize, randomSize); // 设置游戏物体的尺寸
-        speed = Random.Range(5f, 9f);
+        speed = Random.Range(6f, 12f+pointManager.DaDiShuShuLiang/5);
         if (Kind == 1)
         {
-            speed = speed * 1.5f;
+            speed = speed * 1.6f;
         }
     }
     
@@ -93,7 +95,7 @@ public class RandomWander : MonoBehaviour
 
                 randomDirection = normalizedDirection;
 
-                newPosition = (Vector2)transform.position + randomDirection * speed * 1.5f * Time.deltaTime;
+                newPosition = (Vector2)transform.position + randomDirection * speed * 2f * Time.deltaTime;
             }
             else { RunTime -= Time.deltaTime; }
         }
@@ -108,7 +110,7 @@ public class RandomWander : MonoBehaviour
 
                 randomDirection = normalizedDirection;
 
-                newPosition = (Vector2)transform.position + randomDirection * speed * 1.5f * Time.deltaTime;
+                newPosition = (Vector2)transform.position + randomDirection * speed * 2f * Time.deltaTime;
             }
             else { RunTime -= Time.deltaTime; }
         }
@@ -121,7 +123,7 @@ public class RandomWander : MonoBehaviour
 
             randomDirection = normalizedDirection;
 
-            newPosition = (Vector2)transform.position + randomDirection * speed*1.5f * Time.deltaTime;
+            newPosition = (Vector2)transform.position + randomDirection * speed*2f * Time.deltaTime;
 
         }
 

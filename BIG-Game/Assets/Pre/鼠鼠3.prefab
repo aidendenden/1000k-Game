@@ -586,10 +586,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e75e9489a176f64c9da8bc928bbd7e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Kind: 0
   mainCamera: {fileID: 0}
   screenEdgeBuffer: 0
   isHited: 0
-  speed: 7
+  speed: 12
   randomDirection: {x: 0, y: 0}
   offset: 1
   rotationSpeed: 7
@@ -718,7 +719,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  shushuHP: 7
+  shushuHP: 5
+  hPTiao: {fileID: 0}
 --- !u!114 &7441796539114550747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,8 +747,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b7ba5c89fd94ee34e830888a2c6fb970, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.368
-  m_Pitch: 1
+  m_Volume: 0.2
+  m_Pitch: 0.9
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -789,7 +791,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0

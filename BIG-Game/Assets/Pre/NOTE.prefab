@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6320845109430179232}
   - component: {fileID: 1585629467224044577}
   - component: {fileID: 7200654132635239499}
+  - component: {fileID: 8088086646002154540}
+  - component: {fileID: 7835362997988714423}
   m_Layer: 0
   m_Name: NOTE
   m_TagString: Note
@@ -76,9 +78,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.5412004, g: 0.8018868, b: 0.20173247, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8bbd8034fe24d4ea39811352134b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 6
 --- !u!50 &1585629467224044577
 Rigidbody2D:
   serializedVersion: 4
@@ -188,3 +190,41 @@ MonoBehaviour:
   - {x: 4, y: 16.5, z: 0}
   - {x: 4, y: 16.5, z: 0}
   - {x: 4, y: 16.5, z: 0}
+  Caizhi:
+  - {fileID: 21300000, guid: f481276676bbdf7439ff0ab4fa2ae334, type: 3}
+  - {fileID: 21300000, guid: 096fdf6da830683498b8dc05239101ea, type: 3}
+  - {fileID: 21300000, guid: a9192a98da681a84c9a3a7442f05c87a, type: 3}
+  - {fileID: 21300000, guid: 017d6912badadaa48ac386201714fa04, type: 3}
+--- !u!95 &8088086646002154540
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330117472588493513}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 823f6f5b64abb9d4f954d5357606f041, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7835362997988714423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330117472588493513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 208cc5a4237291343bdfa35a4a0ad45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

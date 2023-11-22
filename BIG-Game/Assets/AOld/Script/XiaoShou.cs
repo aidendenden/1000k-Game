@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
+//using UnityEditor.Rendering;
 using UnityEngine;
 
 public class XiaoShou : MonoBehaviour
@@ -10,7 +10,7 @@ public class XiaoShou : MonoBehaviour
     public float speedUp = 10f;
 
     private MangeManger mangerManger;
-
+    private PointManager pointManager;
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +23,10 @@ public class XiaoShou : MonoBehaviour
 
     private void Start()
     {
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
         mangerManger = GameObject.FindGameObjectWithTag("Manger").GetComponent<MangeManger>();
         mangerManger.moveSpeed += speedUp;
+        pointManager.addDianJi();
+
     }
 }

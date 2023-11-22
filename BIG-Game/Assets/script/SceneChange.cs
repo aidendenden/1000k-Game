@@ -12,15 +12,46 @@ public class SceneChange : MonoBehaviour
     public int sceneNum;
 
     private bool changeing = false;
+    public float timeDown = 1f;
+    public int bottonHard = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (changeing == false)
         {
-            LoadNextLevel();
-            changeing = true;
+            if (bottonHard >=2)
+            {
+                LoadNextLevel();
+                changeing = true;
+                bottonHard = 0;
+            }
+            else
+            {
+                bottonHard++;
+            }
+           
         }
         
+    }
+
+    private void Update()
+    {
+        if (timeDown <0)
+        {
+            if (bottonHard -1>0)
+            {
+                bottonHard--;
+            }
+            else
+            {
+                bottonHard = 0;
+            }
+            timeDown = 1;
+        }
+        else
+        {
+            timeDown -= Time.deltaTime;
+        }
     }
 
     public void LoadNextLevel()

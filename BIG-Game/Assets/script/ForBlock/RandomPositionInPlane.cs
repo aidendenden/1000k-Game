@@ -1,14 +1,22 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RandomPositionInPlane : MonoBehaviour
 {
     public Transform point1; // 第一个坐标点
     public Transform point2; // 第二个坐标点
+    public TimerExample timerrr;
+    public UnityEvent Full;
+    private PointManager pointManager;
 
     public float DanZhuPoint = 0;
 
     private float PointPass = 0;
 
+    private void Start()
+    {
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
+    }
     public void change()
     {
         // 在两个坐标点构成的平面内随机选择一个点
@@ -37,6 +45,9 @@ public class RandomPositionInPlane : MonoBehaviour
         {
             PointPass = 0;
             change();
+            timerrr.timer = 0f;
+            Full.Invoke();
+            pointManager.addDanZhuScore();
         }
     }
 }

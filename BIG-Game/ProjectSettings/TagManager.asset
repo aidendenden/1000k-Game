@@ -21,6 +21,7 @@ TagManager:
   - PanZi
   - TouZi
   - Hpaa
+  - PointManager
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - UI
   - 11
   - CanBeTouch
-  - 
+  - Touchh
   - 
   - 
   - 

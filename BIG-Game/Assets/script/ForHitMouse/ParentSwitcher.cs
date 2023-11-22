@@ -20,6 +20,7 @@ public class ParentSwitcher : MonoBehaviour
     private bool isPass = false;
     private HPTiao hPTiao;
     private bool iscanBeTouch = true;
+    private PointManager pointManager;
 
 
     private void Start()
@@ -28,6 +29,7 @@ public class ParentSwitcher : MonoBehaviour
         KuangZi = GameObject.FindGameObjectWithTag("Kuang");
         hItPoint = GameObject.FindGameObjectWithTag("JinDu").GetComponent<HItPoint>();
         hPTiao = GameObject.FindGameObjectWithTag("Hpaa").GetComponent<HPTiao>();
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
     }
     public void SwitchParent()
     {
@@ -100,6 +102,8 @@ public class ParentSwitcher : MonoBehaviour
         if(isPass == false)
         {
             hItPoint.Poing();
+            pointManager.addDaDiShuLiang();
+            pointManager.addDaDiShuScore(1);
             isPass = true;
         }
         
@@ -109,8 +113,19 @@ public class ParentSwitcher : MonoBehaviour
     {
         if (isPass == false)
         {
-            hItPoint.DePoing(3);
-            isPass = true;
+            if (pointManager.DaDiShuScore >=1)
+            {
+                hItPoint.DePoing(1);
+                pointManager.addDaDiShuScore(-1);
+                isPass = true;
+            }
+            else
+            {
+                pointManager.DaDiShuScore = 0;
+                hItPoint.DePoing(1);
+                isPass = true;
+            }
+            
         }
         
     }

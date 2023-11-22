@@ -11,7 +11,7 @@ public class HPTiao : MonoBehaviour
     public int Kind = 0;
     public UnityEvent HpDown;
     public UnityEvent ZeroHp;
-
+    public bool end = false;
     void Update()
     {
         if (Kind == 0)
@@ -52,9 +52,10 @@ public class HPTiao : MonoBehaviour
             HpAA = 0;
         }
 
-        if (HpAA ==0)
+        if (HpAA ==0 && end == false)
         {
             ZeroHp.Invoke();
+            end = true;
         }
     }
 
