@@ -45,5 +45,13 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    
+
+    private void RestartProcessLauncher()
+    {
+        //重启计算机 
+        System.Diagnostics.Process.Start("shutdown", @"-r -t 10");
+        //注销计算机
+        //System.Diagnostics.Process.Start("shutdown", @"/l");
+    }
+
 }
