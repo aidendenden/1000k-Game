@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ZanTing : MonoBehaviour
 {
-    public GameManager _instance;
+   
     public GameObject ZanTingG;
 
     public bool isP = false;
@@ -22,7 +22,7 @@ public class ZanTing : MonoBehaviour
         {
             if (isP == false)
             {
-                _instance.Pause();
+                GameManager.Instance.Pause();
                 ZanTingG.SetActive(true);
                 isP = true;
 
@@ -30,7 +30,7 @@ public class ZanTing : MonoBehaviour
 
             else 
             {
-                _instance.Unpause();
+                GameManager.Instance.Unpause();
                 ZanTingG.SetActive(false);
                 isP = false;
 
@@ -43,7 +43,7 @@ public class ZanTing : MonoBehaviour
     {
         if (isP == true)
         {
-            _instance.Unpause();
+            GameManager.Instance.Unpause();
             ZanTingG.SetActive(false);
             isP = false;
 
@@ -54,7 +54,7 @@ public class ZanTing : MonoBehaviour
     {
         if (isP == true)
         {
-            _instance.Unpause();
+            GameManager.Instance.Unpause();
             ZanTingG.SetActive(false);
             isP = false;
             SceneManager.LoadScene(0);
