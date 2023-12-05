@@ -8,13 +8,21 @@ public class DisplayNumberWithTextMeshPro : MonoBehaviour
 
     public MusicPoint musicPoint;
     private Animator aniCombo;
+
+    private PointManager pointManager;
+
+   
     // 在每帧更新中更新TextMeshPro显示的值
 
     private void Start()
     {
-        musicPoint = GameObject.FindGameObjectWithTag("PManager").GetComponent<MusicPoint>();
-        aniCombo = GetComponent<Animator>();
-    
+        
+            musicPoint = GameObject.FindGameObjectWithTag("PManager").GetComponent<MusicPoint>();
+            aniCombo = GetComponent<Animator>();
+        
+      
+
+
     }
 
 

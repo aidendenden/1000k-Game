@@ -7,6 +7,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
 using System.IO;
+using UnityEngine.Events;
+using System.Reflection;
 
 public enum OperationMath
 {
@@ -38,6 +40,11 @@ public class CountDownSystem : MonoBehaviour
     //public CircularTimer[] circularTimers;
 
     public CircleTimerSprite[] circularTimers;
+    public float GOPastNumber = 2;
+    public float CheckTime = 3f;
+
+    public UnityEvent Cuo;
+    public UnityEvent Dui;
 
     public MangeManger gameManager;
 
@@ -52,11 +59,12 @@ public class CountDownSystem : MonoBehaviour
 
     [Serialize] public List<DiceImage> DiceImages;
 
-    [Header("间隔时间")] public float WaitTime = 1f;
+    [Header("间隔时间")] public float WaitTime = 3f;
 
     //private WaitForSeconds waitTime;
 
     public SpriteRenderer Dice1, Dice2, Dice3, Dice4;
+    public FireManger fireManger;
 
 
     private void Awake()
@@ -70,6 +78,39 @@ public class CountDownSystem : MonoBehaviour
         //StartCoroutine(GameStart());
     }
 
+    private void TimeCheck()
+    {
+        if(fireManger.isDDD== true)
+        {
+            
+            
+               
+                int num1 = gameManager.numberOne;
+                int num2 = gameManager.numberTwo;
+
+                JudgmentsBased _judgments = JudgmentsBased.Equal;
+                bool b = CanReachTargetNumberAdd(num1, num2, DiceImages[0].AnswerNum, _judgments);
+                if (b&& num1 !=0 && num2 !=0)
+                {
+                    if (CheckTime >0)
+                    {
+                        CheckTime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        CheckTime = 1;
+                        circularTimers[0].NowPass = true;
+                    }
+                   
+                }
+            else
+            {
+                CheckTime = 1;
+            }
+            
+        }
+        
+    }
 
     private void Update()
     {
@@ -78,11 +119,29 @@ public class CountDownSystem : MonoBehaviour
 
         Dice2.sprite = newSprite[gameManager.numberTwo];
         Dice4.sprite = newSprite[gameManager.numberTwo];
+
+        TimeCheck();
     }
 
     public void TimerStart(int index)
     {
         var _ = UnityEngine.Random.Range(2, 12);
+        for (int i = 0; i < 1;)
+        {
+            if (_ == GOPastNumber)
+            {
+                _ = UnityEngine.Random.Range(2, 12);
+                if(_ != GOPastNumber)
+                {
+                    GOPastNumber = _;
+                    i++;
+                }
+            }
+            else
+            {
+                i++;
+            }
+        }
         Debug.Log(_ + "目标数");
         DiceImages[index].AnswerNum = _;
         DiceImages[index].Answer.sprite = newSprite[_];
@@ -184,15 +243,17 @@ public class CountDownSystem : MonoBehaviour
                 break;
         }
 
-        if (b)
+        if (b&&num1 != 0 && num2 != 0)
         {
-            GameEventManager.Instance.Triggered($"CountDownAnswerIsTrue:{index}", transform,
-                new Vector3(num1, num2, DiceImages[index].AnswerNum));
+           Dui.Invoke();
+            //GameEventManager.Instance.Triggered($"CountDownAnswerIsTrue:{index}", transform,
+            // new Vector3(num1, num2, DiceImages[index].AnswerNum));
         }
         else
         {
-            GameEventManager.Instance.Triggered($"CountDownAnswerIsFalse:{index}", transform,
-                new Vector3(num1, num2, DiceImages[index].AnswerNum));
+            Cuo.Invoke();
+            //GameEventManager.Instance.Triggered($"CountDownAnswerIsFalse:{index}", transform,
+               // new Vector3(num1, num2, DiceImages[index].AnswerNum));
         }
     }
 

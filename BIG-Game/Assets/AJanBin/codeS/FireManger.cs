@@ -44,39 +44,45 @@ public class FireManger : MonoBehaviour
     public SpriteRenderer FuHaoHao;
     public SpriteRenderer FuHaoHaoA;
     public GameObject EnemyOne;
+    public bool isDDD = false;
+
+    private PointManager pointManager;
+   
 
 
     public float durationD = 5f; // 计时器持续时间
-    private bool isTimerRunningD = false; // 计时器是否正在运行
+    public bool isTimerRunningD = false; // 计时器是否正在运行
 
     public float durationA = 5f; // 计时器持续时间
     private bool isTimerRunningA = false; // 计时器是否正在运行
 
+    public HPTiao hpTiao;
 
     public void SpawnDemo()
     {
 
         if (1 == UnityEngine.Random.Range(0, 2))
         {
-            countDownSystem.judgmentsBased1 = JudgmentsBased.MoreThan;
-            FuHaoHao.sprite = FuHao[0]; 
+            countDownSystem.judgmentsBased1 = JudgmentsBased.Equal;
+            FuHaoHao.sprite = FuHao[1]; 
         }
         else
         {
-            countDownSystem.judgmentsBased1 = JudgmentsBased.LessThan;
-            FuHaoHao.sprite = FuHao[1];
+            countDownSystem.judgmentsBased1 = JudgmentsBased.Equal;
+            FuHaoHao.sprite = FuHao[0];
         }
-       
-        Demo.Play("真正的恶魔出现");
+
+        Demo.SetTrigger("EM");
         countDownSystem.TimerStart(0);
         Debug.Log("恶魔");
+        isDDD = true;
     }
 
     public void SpawnAngle()
     {
 
-        
-        Angle.Play("天使");
+
+        Angle.SetTrigger("TianShi");
         countDownSystem.TimerStart(1);
         Debug.Log("天使");
         
@@ -119,11 +125,38 @@ public class FireManger : MonoBehaviour
     }
     private void Start()
     {
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
         GameEventManager.OnTrigger += Triggered;
         SpawnDemo();
-        SpawnAngle();
+        //SpawnAngle();
     }
 
+
+    public void EMOK()
+    {
+        Demo.SetTrigger("EMZL");
+        good.PlayOneShot(good.clip);
+        pointManager.addTouziScore();
+        durationD = 2f;
+        isTimerRunningD = true;
+        isDDD = false;
+        if (cccccc.duration - 1 >= 5)
+        {
+            cccccc.duration--;
+
+        }
+    }
+
+    public void EMBad()
+    {
+        Demo.SetTrigger("EMZL");
+        durationD = 3f;
+        isTimerRunningD = true;
+        FireOne(1);
+        cccccc.duration++;
+        bad.PlayOneShot(bad.clip);
+        hpTiao.HPdown(1);
+    }
     void Triggered(string message, Transform _transform, Vector3 _vector3)
     {
         if (message.Contains("CountDownAnswerIsTrue"))
@@ -139,26 +172,20 @@ public class FireManger : MonoBehaviour
 
             if (value == 0)
             {
-                Demo.Play("恶魔走了");
-                good.PlayOneShot(good.clip);
-                durationD = 3f;
-                isTimerRunningD = true;
-                if(cccccc.duration-1 >= 5)
-                {
-                    cccccc.duration--;
-
-                }
+                
                
 
 
             }
             else if (value == 1)
             {
-                Angle.Play("天使走了");
+                Angle.SetTrigger("TianShiZouLe");
                 durationA = 3f;
                 isTimerRunningA = true;
+                pointManager.addTouziScore();
                 FireHP(1);
                 good.PlayOneShot(good.clip);
+                hpTiao.HPdown(-1);
                 if (cccccc.duration - 1 >= 5)
                 {
                     cccccc.duration--;
@@ -181,12 +208,8 @@ public class FireManger : MonoBehaviour
             }
             if (value == 0)
             {
-                Demo.Play("恶魔走了");
-                durationD = 3f;
-                isTimerRunningD = true;
-                FireOne(1);
-                cccccc.duration++;
-                bad.PlayOneShot(bad.clip);
+                
+
 
 
 
@@ -194,7 +217,7 @@ public class FireManger : MonoBehaviour
             }
             else if (value == 1)
             {
-                Angle.Play("天使走了");
+                Angle.SetTrigger("TianShiZouLe");
                 durationA = 3f;
                 isTimerRunningA = true;
                 //FireOne(1);

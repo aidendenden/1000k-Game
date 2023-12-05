@@ -9,6 +9,7 @@ public class HItPoint : MonoBehaviour
     public float maxY = 6f; // y坐标的上限
     public float valueMax = 10f; // 数值的上限
     private float startY = 0f; // 起始y坐标
+    public bool isHard = true;
 
     public GameObject BaoShu;
     public GameObject HaoShu1;
@@ -17,27 +18,29 @@ public class HItPoint : MonoBehaviour
     public GameObject HaoShu4;
     public SpawnMouse spawnMouse1;
     public SpawnMouse spawnMouse2;
+    private PointManager pointManager;
+
 
     public void Poing()
     {
         Point++;
-        if(Point == 2)
+        if(Point == 2&& isHard)
         {
             spawnMouse1.prefabsToSpawn[0] = BaoShu;
             spawnMouse2.prefabsToSpawn[0] = BaoShu;
         }
-        if (Point == 12)
+        if (Point == 12 && isHard)
         {
             spawnMouse1.prefabsToSpawn[1] = BaoShu;
             spawnMouse2.prefabsToSpawn[1] = BaoShu;
         }
-        if (Point == 22)
+        if (Point == 22 && isHard)
         {
             spawnMouse1.prefabsToSpawn[2] = BaoShu;
             spawnMouse2.prefabsToSpawn[2] = BaoShu;
 
         }
-        if (Point == 30)
+        if (Point == 30 && isHard)
         {
             spawnMouse1.prefabsToSpawn[3] = BaoShu;
             spawnMouse2.prefabsToSpawn[3] = BaoShu;
@@ -53,23 +56,23 @@ public class HItPoint : MonoBehaviour
 
             Point -= a;
 
-            if (Point < 2)
+            if (Point < 2 && isHard)
             {
                 spawnMouse1.prefabsToSpawn[0] = HaoShu1;
                 spawnMouse2.prefabsToSpawn[0] = HaoShu1;
             }
-            if (Point < 12)
+            if (Point < 12 && isHard)
             {
                 spawnMouse1.prefabsToSpawn[1] = HaoShu2;
                 spawnMouse2.prefabsToSpawn[1] = HaoShu2;
             }
-            if (Point < 22)
+            if (Point < 22 && isHard)
             {
                 spawnMouse1.prefabsToSpawn[2] =HaoShu3;
                 spawnMouse2.prefabsToSpawn[2] = HaoShu3;
             }
 
-            if (Point < 30)
+            if (Point < 30 && isHard)
             {
                 spawnMouse1.prefabsToSpawn[3] = HaoShu4;
                 spawnMouse2.prefabsToSpawn[3] = HaoShu4;
@@ -77,16 +80,21 @@ public class HItPoint : MonoBehaviour
         }
         else {
 
-            Point = 0;
+            if (isHard)
+            {
+                Point = 0;
 
-            spawnMouse1.prefabsToSpawn[0] = HaoShu1;
-            spawnMouse2.prefabsToSpawn[0] = HaoShu1;
-            spawnMouse1.prefabsToSpawn[1] = HaoShu2;
-            spawnMouse2.prefabsToSpawn[1] = HaoShu2;
-            spawnMouse1.prefabsToSpawn[2] = HaoShu3;
-            spawnMouse2.prefabsToSpawn[2] = HaoShu3;
-            spawnMouse1.prefabsToSpawn[3] = HaoShu4;
-            spawnMouse2.prefabsToSpawn[3] = HaoShu4;
+                spawnMouse1.prefabsToSpawn[0] = HaoShu1;
+                spawnMouse2.prefabsToSpawn[0] = HaoShu1;
+                spawnMouse1.prefabsToSpawn[1] = HaoShu2;
+                spawnMouse2.prefabsToSpawn[1] = HaoShu2;
+                spawnMouse1.prefabsToSpawn[2] = HaoShu3;
+                spawnMouse2.prefabsToSpawn[2] = HaoShu3;
+                spawnMouse1.prefabsToSpawn[3] = HaoShu4;
+                spawnMouse2.prefabsToSpawn[3] = HaoShu4;
+
+            }
+            
         
         
         }
@@ -97,6 +105,8 @@ public class HItPoint : MonoBehaviour
     {
         // 保存起始y坐标
         startY = transform.position.y;
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
+        pointManager.DaDiShuZero();
     }
 
     void Update()

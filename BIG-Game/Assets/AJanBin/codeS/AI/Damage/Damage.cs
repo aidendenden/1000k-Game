@@ -44,7 +44,7 @@ public class Damage : MonoBehaviour
                 {
                     if (fsmTouZi.parameter.Hp - 1 <= 0)
                     {
-                        ChangeS.SetActive(true);
+                       // ChangeS.SetActive(true);
                     }
                     else
                     {

@@ -18,10 +18,12 @@ public class MangeManger : MonoBehaviour
 
     public Animator Eye;
     public GameObject Stop;
+    private PointManager pointManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
+        pointManager.TouZiZero();
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class MangeManger : MonoBehaviour
         {
             moveSpeed -= shrinkSpeed * Time.deltaTime;
         }
+        pointManager.addTime(Time.deltaTime);
     }
 
     public void Stopp()

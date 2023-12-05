@@ -208,6 +208,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ZeroHp:
+    m_PersistentCalls:
+      m_Calls: []
+  end: 0
 --- !u!1 &7842506128265101054
 GameObject:
   m_ObjectHideFlags: 0

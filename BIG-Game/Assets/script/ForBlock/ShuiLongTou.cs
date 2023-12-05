@@ -6,9 +6,16 @@ public class ShuiLongTou : MonoBehaviour
 {
     public GameObject objectToSpawn; // 要生成的游戏物体
     public float spawnInterval = 1.0f; // 生成间隔时间
+    private PointManager pointManager;
 
     private float timer = 0.0f;
 
+
+    private void Start()
+    {
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
+        pointManager.DanZhuZero();
+    }
     void Update()
     {
         // 计时器递增

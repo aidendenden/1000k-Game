@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:BIG-Game/Assets/Toys Sound Pack/toys_big_box_dropping_bed_01.wav.meta
 guid: 57be118f9c0a9d44984c1fda5fcbab13
+========
+guid: 1d21765e03f1bba4eadc16185fbde14f
+>>>>>>>> new:BIG-Game/Assets/Sound/Y2meta.app - (FREE) Lofi Type Beat - 90's Aesthetic (prod. Yusei) (128 kbps).mp3.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6

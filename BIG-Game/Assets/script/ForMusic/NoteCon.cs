@@ -6,6 +6,9 @@ using UnityEngine;
 public class NoteCon : MonoBehaviour
 {
     private MusicPoint musicPoint;
+    private Animator ani;
+
+   
 
 
     
@@ -16,12 +19,13 @@ public class NoteCon : MonoBehaviour
     private void Start()
     {
         musicPoint = GameObject.FindGameObjectWithTag("PManager").GetComponent<MusicPoint>();
+        ani = gameObject.GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ChuFa")
         {
-            Destroy(gameObject);
+            ani.SetTrigger("OOUT");
         }
     }
 

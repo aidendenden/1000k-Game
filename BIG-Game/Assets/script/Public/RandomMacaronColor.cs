@@ -3,7 +3,13 @@ using UnityEngine;
 public class RandomMacaronColor : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
+    private PointManager pointManager;
 
+    private void Start()
+    {
+        pointManager = GameObject.FindGameObjectWithTag("PointManager").GetComponent<PointManager>();
+        pointManager.addDianJi();
+    }
     public void SetRandomMacaronColor()
     {
         if (spriteRenderer == null)

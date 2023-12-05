@@ -48,7 +48,7 @@ public class MusicRhythmGenerator : MonoBehaviour
         if (maxSpectrumValue > sensitivity)
         {
             _beatTimer += Time.deltaTime;
-            if (_beatTimer > spawnInterval-(musicPoint.point/80))
+            if (_beatTimer > spawnInterval-1.5*(musicPoint.point/100))
             {
                 // 生成物体
                 StartCoroutine(SpawnObjectWithDelay(spawnDelay));
