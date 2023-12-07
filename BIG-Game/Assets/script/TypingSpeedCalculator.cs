@@ -19,6 +19,7 @@ public class TypingSpeedCalculator : MonoBehaviour
     public KeyCode inputNow;
     public KeyCode inputPast;
     public Vector2 InputSt;
+    public Vector2 InputStt;
     public Vector2 InputEd;
     public bool isLianXueIng = false;
     public Vector2 HuaDongFangXiang;
@@ -28,6 +29,15 @@ public class TypingSpeedCalculator : MonoBehaviour
     public UnityEvent HuaDongEventDown;
     public UnityEvent HuaDongEventLeft;
     public UnityEvent HuaDongEventRight;
+
+
+    public UnityEvent HuaDongEventUpF;
+    public UnityEvent HuaDongEventDownF;
+    public UnityEvent HuaDongEventLeftF;
+    public UnityEvent HuaDongEventRightF;
+    public UnityEvent noHuaDongEventXF;
+    public UnityEvent noHuaDongEventYF;
+
     public UnityEvent noHuaDongEventX;
     public UnityEvent noHuaDongEventY;
     public UnityEvent HuaDongEventEnd;
@@ -157,7 +167,7 @@ public class TypingSpeedCalculator : MonoBehaviour
 
     
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.anyKeyDown)
         {
@@ -288,7 +298,7 @@ public class TypingSpeedCalculator : MonoBehaviour
              //Debug.Log("连续开始");
             isLianXueIng = true;
             //StartCoroutine("kaishi");
-
+            InputStt = KeyCodeToV(inputNow);
 
 
             nowScreenPosition = GetScreenCoordinates(InputSt);
@@ -316,8 +326,11 @@ public class TypingSpeedCalculator : MonoBehaviour
                 inputList[0] = false;
                 inputList[1] = false;
 
-                Vector2 vector2_B=Vector2.zero;
-                PanDuanFangXiang(vector2_B);
+                Vector2 vector2_B = KeyCodeToV(inputNow) - InputStt;
+                PanDuanFangXiangF(vector2_B);
+                InputStt = Vector2.zero;
+                
+
               //  Debug.Log("连续结束" + vector2_B);
                 HuaDongEventEnd.Invoke();
                 GameEventManager.Instance.Triggered("连续结束",transform,vector2_B);
@@ -493,6 +506,58 @@ public class TypingSpeedCalculator : MonoBehaviour
             HuaDongFangXiang.y = D.y;
             noHuaDongEventY.Invoke();
             //Debug.Log("y为0");
+        }
+    }
+
+
+    void PanDuanFangXiangF(Vector2 D)
+    {
+        if (D.x < 0 && Math.Abs(D.x) > Math.Abs(D.y))
+        {
+            HuaDongFangXiang.x = D.x;
+            HuaDongEventLeftF.Invoke();
+            Debug.Log("向左");
+            
+
+        }
+
+        if (D.x > 0 && Math.Abs(D.x) > Math.Abs(D.y))
+        {
+            HuaDongFangXiang.x = D.x;
+            HuaDongEventRightF.Invoke();
+            Debug.Log("向右");
+
+        }
+
+        if (D.x == 0&&Math.Abs(D.x) > Math.Abs(D.y))
+        {
+            HuaDongFangXiang.x = D.x;
+            noHuaDongEventXF.Invoke();
+            Debug.Log("X为0");
+        }
+
+
+        if (D.y < 0&& Math.Abs(D.x) < Math.Abs(D.y))
+        {
+            HuaDongFangXiang.y = D.y;
+            HuaDongEventDownF.Invoke();
+            Debug.Log("向下");
+
+        }
+
+        if (D.y > 0 && Math.Abs(D.x) < Math.Abs(D.y))
+        {
+            HuaDongFangXiang.y = D.y;
+            HuaDongEventUpF.Invoke();
+            Debug.Log("向上");
+
+        }
+
+        if (D.y == 0 && Math.Abs(D.x) < Math.Abs(D.y))
+        {
+            HuaDongFangXiang.y = D.y;
+            noHuaDongEventYF.Invoke();
+            Debug.Log("y为0");
         }
     }
 }
